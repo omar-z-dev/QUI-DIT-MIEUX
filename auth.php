@@ -1,7 +1,15 @@
 <?php
 
+/*
+
+Rôle : gérer l'authentification et l'inscription des utilisateurs
+Paramètres : action (login ou register) et les données du formulaire (identifiant, mot de passe, pseudo, email)
+
+*/
+
 require_once "libr/init.php";
 
+// Récupération du paramètre action pour différencier entre login ou register
 $action = $_GET["action"] ?? "";
 
 switch ($action) {
@@ -15,17 +23,24 @@ switch ($action) {
             $identifiant = trim($_POST["identifiant"] ?? "");
             $password    = trim($_POST["password"] ?? "");
 
-        //instancier un utilisateur
-        $user = new utilisateur();
+            // A-t-on saisi les codes de connexion ?
+            if (empty($identifiant) || empty($password)) {
+                $_SESSION["error_login"] = "Tous les champs sont obligatoires ❌";
+                header("Location: auth.php?action=login");
+                exit;
+            }
 
-        //verifier si l'utilisateur existe ds la BDD
-        $verifuser = $user->login($identifiant, $password);
+        //instancier un utilisateur
+        $utilisateur = new utilisateur();
+
+        //verifier si l'utilisateur existe ds la BDD (utilisation de la methode login)
+        $verifuser = $utilisateur->login($identifiant, $password);
 
         if ($verifuser){
 
-            //creer la session pour stocker les info de l'utilisateur dans $_SESSION
+            //créer la session pour stocker les info de l'utilisateur dans $_SESSION
             //var_dump($user);  exit;
-            connection($user);
+            connection($verifuser);
 
             //rediriger vers dashboard
             header("Location: dashbord.php");
@@ -52,10 +67,9 @@ switch ($action) {
             $email    = trim($_POST["email"] ?? "");
             $password = $_POST["password"] ?? "";
 
-            // traitement de l'inscription ici
 
-
-            $user = new utilisateur();
+            // traitement de l'inscription 
+            $utilisateur = new utilisateur();
 
             // verifier si tous les champs sont remplis
             if (empty($pseudo) || empty($email) || empty($password)) {
@@ -64,7 +78,7 @@ switch ($action) {
                 exit;
             }
 
-            //verifier si email valide 
+            //verifier si email valide avec la fonction filter_var
 
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
@@ -74,7 +88,7 @@ switch ($action) {
                 exit;
             }
 
-            //verifier pseudo valide avec regex
+            //verifier pseudo valide avec expression régulière (regex)
             if (!preg_match("/^[a-zA-ZÀ-ÿ -]{2,50}$/", $pseudo)) {
 
                 $_SESSION["error_register"] = "pseudo invalide ❌";
@@ -85,7 +99,7 @@ switch ($action) {
 
             //verifier si email est unique
 
-            if ($user->findBy("email", $email)) {
+            if ($utilisateur->findBy("email", $email)) {
 
                 $_SESSION["error_register"] = "Cet email existe déjà ❌";
 
@@ -93,7 +107,7 @@ switch ($action) {
                 exit;
             }
 
-            //************************!recaptchat 
+            //*******!recaptchat 
 
             $recaptcha = new recaptcha();
 
@@ -109,11 +123,11 @@ switch ($action) {
             }
 
             //assigner les parametre de l'utilisateur
-            $user->set("pseudo", $pseudo);
-            $user->set("email", $email);
-            $user->set("mdp", $password);
+            $utilisateur->set("pseudo", $pseudo);
+            $utilisateur->set("email", $email);
+            $utilisateur->set("mdp", $password);
 
-            $userRegister = $user->register();
+            $userRegister = $utilisateur->register();
 
             if ($userRegister){
 

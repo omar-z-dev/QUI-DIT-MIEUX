@@ -1,6 +1,9 @@
 <?php
 //role : afficher la page dashboard
 
+// Initialisations diverses
+require_once "libr/init.php";
+
 //recuperer l'utilisateur connecté
 $user = userConnected();
 
