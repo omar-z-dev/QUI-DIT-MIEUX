@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        
+    </head>
+    <body>
+        <div>
+
+            <!-- creer compte -->
+            <h2>Inscription</h2>
+
+
+            <!-- register : creation de compte-->
+            <form method="POST" action="auth.php?action=register" novalidate>
+                <h3>Créer un compte</h3>
+
+                <!-- message d'erreur creation de compte  -->
+
+                <?php if (!empty($_SESSION["error_register"])): ?>
+                    <p style="color:red; font-weight:bold;"><?= $_SESSION["error_register"] ?></p>
+                    <?php unset($_SESSION["error_register"]); ?>
+                <?php endif; ?>
+
+                <!-- message succes de creation de compte  -->
+                 
+                <?php if (!empty($_SESSION["success_register"])): ?>
+                    <p style="color:green; font-weight:bold;"><?= $_SESSION["success_register"] ?></p>
+                    <?php unset($_SESSION["success_register"]); ?>
+                <?php endif; ?>
+
+                <!-- message errerir recaptcha  -->
+                 
+                <?php if (!empty($_SESSION["error_recaptcha"])): ?>
+                    <p style="color:red; font-weight:bold;"><?= $_SESSION["error_recaptcha"] ?></p>
+                    <?php unset($_SESSION["error_recaptcha"]); ?>
+                <?php endif; ?>
+
+
+                <input type="text" name="pseudo" placeholder="Votre pseudo" ><br><br>
+                <input type="email" name="email" placeholder="Email" ><br><br>
+                <input type="password" name="password" placeholder="Mot de passe" ><br><br>
+
+                <!-- recaptcha -->
+
+                <div 
+                    class="g-recaptcha" data-sitekey="6LeudFAtAAAAAPQUtTevQqrRFn5eU8tPc6XHy1LC">
+                </div>
+
+                <button type="submit">S'inscrire</button>
+
+            </form>
+        </div>
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+       
+    </body>
+</html>
