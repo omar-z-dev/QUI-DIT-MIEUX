@@ -47,7 +47,7 @@ function ouvrirConversation(artisteId) {
       role : Rafraîchissement automatique de la liste de conversation 
 =====================================================================*/
 //
-function rafraichirListeConversations() {
+/*function rafraichirListeConversations() {
   console.log("test rafraichirListeConversations");
   fetch("liste-conversations-ajax.php")
     .then((response) => response.text())
@@ -63,7 +63,7 @@ setInterval(function () {
   console.log("test setInterval liste de conversation");
 
   rafraichirListeConversations();
-}, 1000);
+}, 1000044444440000);*/
 
 /*==========================================================  
          role : envoyer un message 
