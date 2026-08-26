@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Qui Dit Mieux</title>
 </head>
 <body>
 
     <header>
-        <h1>Accueil Qui Dit Mieux</h1>
-
         <!-- Navigation creation de compte et connexion -->
         <nav>
             <a href="auth.php?action=register">Créer un compte</a>
@@ -18,9 +17,11 @@
     </header>
 
     <main>
+        <h1> Qui Dit Mieux</h1>
+        <h2>Accueil publique</h2>
         <!-- Affichage les objets proposés -->
         <section>
-            <h2>Objets proposés :</h2>
+            <h3>Objets proposés :</h3>
 
             <ul>
                 <li>Obj 1</li>
@@ -31,7 +32,7 @@
 
         <!-- Formulaire de recherche -->
         <section>
-            <h2>Recherche :</h2>
+            <h3>Recherche :</h3>
 
             <form action="recherche.php" method="GET">
 
@@ -69,20 +70,15 @@
 
                 <div>
                     <label for="vente">État de la vente :</label>
-
                     <select name="vente" id="vente">
                         <option value="">Toutes</option>
                         <option value="en_cours">Ventes en cours</option>
                         <option value="terminee">Ventes terminées</option>
                     </select>
                 </div>
-
                 <button type="submit">Valider</button>
-
             </form>
         </section>
-
     </main>
-
 </body>
 </html>

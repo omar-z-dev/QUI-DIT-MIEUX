@@ -98,7 +98,6 @@
                     </tfoot>
                 </table>
                 <?php endif; ?>
-
             </section>
 
             <!-- Mes enchères -->
