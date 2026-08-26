@@ -27,7 +27,7 @@ class utilisateur extends _model {
 
         // Création de la requête
         $sql = "SELECT * FROM `$this->table` 
-                where ( `email` = :identifiant OR  `pseudo` = :identifiant ) ";
+                where ( `email` = :identifiant OR `pseudo` = :identifiant ) ";
                 
         // Valoriser l'identifiant, ds ce cas l'email
 

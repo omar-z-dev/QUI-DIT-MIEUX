@@ -55,6 +55,9 @@
             </form>
         </div>
 
+        <!-- bouton retour accueil principal -->
+        <a href="index.php">Retour à l'accueil</a>
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
        
     </body>

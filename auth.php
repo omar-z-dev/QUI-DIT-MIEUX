@@ -15,7 +15,9 @@ $action = $_GET["action"] ?? "";
 
 switch ($action) {
 
-    // CONNEXION
+    /*================================
+                CONNEXION
+    ================================*/
     case "login":
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -41,10 +43,10 @@ switch ($action) {
 
             //créer la session pour stocker les info de l'utilisateur dans $_SESSION
             //var_dump($user);  exit;
-            connection($verifuser);
+            connection($utilisateur);
 
             //rediriger vers dashboard
-            header("Location: dashbord.php");
+            header("Location: dashboard.php");
             exit;
         }
             //message d'erreur a afficher sur la page d'accueil
@@ -57,8 +59,9 @@ switch ($action) {
             require "templates/pages/afficher-page-connexion.php";
             break;
 
-
-    // CRÉATION DU COMPTE
+    /*================================
+         CRÉATION DU COMPTE
+    ================================*/
     case "register":
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
