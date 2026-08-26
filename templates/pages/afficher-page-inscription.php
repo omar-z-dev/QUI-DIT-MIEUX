@@ -47,7 +47,7 @@
                 <!-- recaptcha -->
 
                 <div 
-                    class="g-recaptcha" data-sitekey="6LeudFAtAAAAAPQUtTevQqrRFn5eU8tPc6XHy1LC">
+                    class="g-recaptcha" data-sitekey="6LcoUZotAAAAAMqyFNFh10UzzSfHlCxVR7bVP1yd">
                 </div>
 
                 <button type="submit">S'inscrire</button>

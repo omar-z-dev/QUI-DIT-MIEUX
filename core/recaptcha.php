@@ -10,10 +10,9 @@ class recaptcha {
         une autre classe ;
         un utilisateur ;
         le navigateur.*/
-
-        
+  
     // clé a google  : Je suis bien le propriétaire de ce site, autorise-moi à vérifier ce token
-    private $secret = "6LeudFAtAAAAAJ8-gVHyYLV1mBTrUrDyBZragxa4";
+    private $secret = "6LcoUZotAAAAAIRoQpsotOL0ZUr2NwHq4J7yDeaC";
 
     function verify($token) {
 
@@ -63,14 +62,11 @@ class recaptcha {
                         "hostname"     : "fep-omar.play.mywebecom.ovh"
                         }"     */
 
-
-
         $response = json_decode($result);
 
         /*var_dump($response);
         echo "</pre>";
         exit;
-
 
         object(stdClass)#5 (3) {
                 ["success"]=>bool(true)

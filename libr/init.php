@@ -31,6 +31,8 @@ spl_autoload_register("loadModel");
 /* ---------------- SESSION ---------------- */
 
 require_once __DIR__ . "/../libr/session.php";
+require_once __DIR__ . "/../core/recaptcha.php";
+require_once __DIR__ . "/../core/api.php";
 
 
 // Initialisation de la session en chargeant la fonction (presente ds session.php) qui inclut session_start

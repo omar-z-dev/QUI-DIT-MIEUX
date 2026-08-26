@@ -3,6 +3,7 @@
 /*
 
 Rôle : gérer l'authentification et l'inscription des utilisateurs
+
 Paramètres : action (login ou register) et les données du formulaire (identifiant, mot de passe, pseudo, email)
 
 */
@@ -19,7 +20,7 @@ switch ($action) {
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-            // Récupérer les données du formulaire
+            // Si on arrive en POST, Récupérer les données du formulaire
             $identifiant = trim($_POST["identifiant"] ?? "");
             $password    = trim($_POST["password"] ?? "");
 
@@ -53,7 +54,7 @@ switch ($action) {
         }
 
           // Si on arrive en GET, afficher le formulaire
-            require "templates/afficher-page-connexion.php";
+            require "templates/pages/afficher-page-connexion.php";
             break;
 
 
@@ -62,7 +63,7 @@ switch ($action) {
 
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-            // Récupérer les données du formulaire
+            // Si on arrive en POST, Récupérer les données du formulaire
             $pseudo   = trim($_POST["pseudo"] ?? "");
             $email    = trim($_POST["email"] ?? "");
             $password = $_POST["password"] ?? "";
@@ -98,7 +99,6 @@ switch ($action) {
             }
 
             //verifier si email est unique
-
             if ($utilisateur->findBy("email", $email)) {
 
                 $_SESSION["error_register"] = "Cet email existe déjà ❌";
@@ -144,40 +144,12 @@ switch ($action) {
         }
            
         
-        // GET : afficher le formulaire
-        require "templates/afficher-page-inscription.php";
+        // Si on arrive en GET : afficher le formulaire
+        require "templates/pages/afficher-page-inscription.php";
         break;
 
     default:
 
-        header("Location: index.php");
-        exit;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-
-        require "templates/afficher-page-inscription.php";
-        break;
-
-
-    default:
         header("Location: index.php");
         exit;
 }

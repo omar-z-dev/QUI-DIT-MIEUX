@@ -8,12 +8,12 @@ require_once __DIR__ . "/../core/model.php";
 // Configuration de la classe enfant
 class utilisateur extends _model {
 
-    protected $table  = "utilisateurs";
+    protected $table  = "utilisateur";
     protected $fields = [
+    "id",
     "email" ,
     "mdp", 
     "pseudo",
-    "date_creation"
     ];
     protected $links  = [];
 

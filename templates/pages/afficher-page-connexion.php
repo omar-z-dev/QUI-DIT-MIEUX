@@ -19,7 +19,7 @@
     </head>
     <body>
         <div>
-            <h1> Farine et potiron</h1>
+            <h1> Qui dit mieux</h1>
 
             <!-- creer compte -->
             <h2>Connexion / Inscription</h2>
