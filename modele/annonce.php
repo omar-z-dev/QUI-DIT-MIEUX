@@ -50,4 +50,66 @@ class annonce extends _model {
         }
         return $objets;
     }
+
+    /*=====================================================
+      2.                 listAll by categorie
+    =======================================================*/
+    function rechercherAnnonces($texte, $categorie, $etat, $prix, $vente){
+        $sql = "SELECT " . $this->listFieldsForSql() . "
+                FROM `$this->table`
+                WHERE 1=1";
+
+        $params = [];
+
+        // Texte dans titre OU description
+        if ($texte !== "") {
+
+            $sql .= " AND (
+                        titre LIKE :texte
+                        OR description LIKE :texte
+                    )";
+
+            $params[":texte"] = "%" . $texte . "%";
+        }
+
+        // Catégorie
+        if ($categorie !== "") {
+
+            $sql .= " AND categorie = :categorie";
+            $params[":categorie"] = $categorie;
+        }
+
+        // État
+        if ($etat !== "") {
+            $sql .= " AND etat = :etat";
+            $params[":etat"] = $etat;
+        }
+
+        // Prix maximum
+        if ($prix !== "") {
+            $sql .= " AND prix_depart <= :prix";
+            $params[":prix"] = $prix;
+        }
+
+        // Vente en cours
+        if ($vente === "en_cours") {
+            $sql .= " AND date_fin > NOW()";
+        }
+
+        // Vente terminée
+        if ($vente === "terminee") {
+            $sql .= " AND date_fin <= NOW()";
+        }
+
+        $req = $this->execute($sql, $params);
+        $lignes = $req->fetchAll(PDO::FETCH_ASSOC);
+        $objets = [];
+
+        foreach ($lignes as $ligne) {
+            $objet = new annonce();
+            $objet->loadFromtab($ligne);
+            $objets[] = $objet;
+        }
+        return $objets;
+    }
 }

@@ -97,7 +97,7 @@
                         <!-- Deuxième ligne : toujours affichée -->
                         <tr>
                             <td colspan="5" style="text-align: center;">
-                                <a href="ajouter.php">
+                                <a href="ajouter-annonce.php">
                                     Créer une annonce ➕
                                 </a>
                             </td>

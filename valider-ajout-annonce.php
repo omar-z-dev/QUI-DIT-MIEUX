@@ -31,7 +31,7 @@ if (
 ) {
     $_SESSION["error_annonce"] = "Tous les champs sont obligatoires ❌";
 
-    header("Location: ajouter.php");
+    header("Location: ajouter-annonce.php");
     exit;
 }
 
@@ -56,7 +56,7 @@ if (!$resultat) {
 
     $_SESSION["error_annonce"] = "Erreur lors de la création de l'annonce ❌";
 
-    header("Location: ajouter.php");
+    header("Location: ajouter-annonce.php");
     exit;
 }
 
@@ -152,5 +152,5 @@ exit;
 // Erreur
 $_SESSION["error_annonce"] = "Erreur lors de la création de l'annonce ❌";
 
-header("Location: ajouter.php");
+header("Location: ajouter-annonce.php");
 exit;*/

@@ -47,7 +47,9 @@
                         <tr>
                             <td><?= $annonce->html("titre") ?>
                             </td>
-                            <td><?= $annonce->html("categorie_id") ?>
+                            <td> <?= htmlspecialchars(
+                                    $categories->{$annonce->value("categorie")}
+                                ) ?>
                             </td>
                             <td><?= $annonce->html("description") ?>
                             </td>
@@ -70,7 +72,7 @@
         <section>
             <h3>Rechercher une annonce :</h3>
 
-            <form action="recherche.php" method="GET">
+            <form action="rechercher-annonces.php" method="GET">
 
                 <div>
                     <label for="texte">Texte présent dans le titre ou la description :</label>
@@ -117,7 +119,7 @@
                         <option value="terminee">Ventes terminées</option>
                     </select>
                 </div>
-                <button type="submit">Valider</button>
+                <button type="submit">Rechercher</button>
             </form>
         </section>
     </main>
