@@ -15,6 +15,20 @@ $annonce = new annonce();
 
 $annonce->load($id);
 
+
+// Code catégorie de l'annonce
+$codeCategorie = $annonce->value("categorie");
+
+echo $codeCategorie;
+
+
+// Récupérer les catégories depuis l'API
+$api = new api();
+$categories = $api->getCategoryByCurl();
+
+// Libellé catégorie venant de l'API
+$libelleCategorie = $categories->{$codeCategorie};
+
 // Charger la photo principale
 $photo = new photo();
 

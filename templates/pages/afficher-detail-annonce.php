@@ -8,6 +8,7 @@ Paramètres : id de l'annonce
 */
 
 /** @var photo $photoPrincipale */
+/** @var string  $libelleCategorie */
 ?>
 
 <!DOCTYPE html>
@@ -22,15 +23,14 @@ Paramètres : id de l'annonce
 </head>
 <body>
     <header>
-        
         <nav>
-            <a href="index.php">Retour Accueil</a>
+            <a href="index.php">↩ Accueil</a>
         </nav>
     </header>
     <main>
         <h1>Qui Dit Mieux</h1>
         <h2>Détail de l'annonce :</h2>
-        <h3> <?=$annonce->html("titre") ?></h3>
+        <h3 > <?=$annonce->html("titre") ?></h3>
 
         <!-- Récuperer la photo principale depuis le dossier img -->
         <?php if ($photoPrincipale): ?>
@@ -39,17 +39,17 @@ Paramètres : id de l'annonce
                 alt="Photo de l'annonce"
                 style="max-width: 400px;">
         <?php else: ?>
-            <p>
-                Aucune image disponible pour cette annonce.
-            </p>
+            <p>Aucune image disponible pour cette annonce.</p>
         <?php endif; ?>
 
         <!-- infos de l'annonce -->
-        <p><strong>Description :</strong><?= $annonce->html("description") ?></p>
+         <p><strong>Catégorie : </strong><?= htmlspecialchars($libelleCategorie) ?></p>
 
-        <p><strong>Prix de départ :</strong><?= $annonce->html("prix_depart") ?> €</p>
+        <p><strong>Description : </strong><?= $annonce->html("description") ?></p>
+        <p><strong>Description : </strong><?= $annonce->html("etat") ?></p>
+        <p><strong>Prix de départ : </strong><?= $annonce->html("prix_depart") ?> €</p>
 
-        <p><strong>Date de fin :</strong><?= $annonce->html("date_fin") ?></p>
+        <p><strong>Date de fin : </strong><?= $annonce->html("date_fin") ?></p>
     </main>
 </body>
-</html>
+</html> 

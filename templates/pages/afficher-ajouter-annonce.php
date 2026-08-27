@@ -68,10 +68,10 @@ Paramètres : $categories : liste des categories de l'api
                 <label for="etat">État de l'objet :</label>
                 <select name="etat" id="etat">
                     <option value="">-- Choisir un état --</option>
-                    <option value="1">Neuf</option>
-                    <option value="2">Très bon état</option>
-                    <option value="3">Bon état</option>
-                    <option value="4">état correct</option>
+                    <option value="Neuf">Neuf</option>
+                    <option value="Très bon état">Très bon état</option>
+                    <option value="Bon état">Bon état</option>
+                    <option value="État correct">État correct</option>
                 </select>
             </div>
             <!-- Prix de départ -->
