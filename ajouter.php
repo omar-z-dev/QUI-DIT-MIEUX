@@ -1,6 +1,6 @@
 <?php
 /*
-Rôle : afficher la page d'ajout d'annonce
+Rôle : afficher la page (formulaire) d'ajout d'annonce
 paramètre : aucun
 
 */

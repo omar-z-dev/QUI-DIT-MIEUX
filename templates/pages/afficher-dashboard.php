@@ -27,10 +27,8 @@
             CONTENU PRINCIPAL
         ========================== -->
         <main>
-            <h1>Qui Dit Mieux</h1>
-
+            <h1>Qui Dit Mieux 💵💵</h1>
             <section>
-
                 <h2>
                     Bienvenue sur votre dashboard
                     <?= $utilisateur->html("pseudo") ?> 👋
@@ -45,12 +43,15 @@
             <section>
 
                 <h2>Mes annonces ✅</h2>
-                <?php if (empty($mesAnnonces)): ?>
 
-                    <p>Vous n'avez aucune annonce.</p>
+                <!-- message apres ajout d'une annonce -->
+                <?php if (isset($_SESSION["success_annonce"])): ?>
+                    <p style="color:green; font-weight:bold;"><?= $_SESSION["success_annonce"] ?></p>
+                    <?php unset($_SESSION["success_annonce"]); ?>
+                <?php endif; ?>
 
-                <?php else: ?>
-
+                <!-- message aucune annonce dispo -->    
+            
                 <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
                     <thead>
                         <tr>
@@ -63,6 +64,15 @@
                     </thead>
 
                     <tbody>
+                        <?php if (empty($mesAnnonces)): ?>
+                            <!-- Première ligne : aucune annonce -->
+                            <tr>
+                                <td colspan="5" style="text-align: center;">
+                                    Vous n'avez aucune annonce.
+                                </td>
+                            </tr>
+                        <?php else: ?>
+
                         <?php foreach ($mesAnnonces as $annonce): ?>
                             <tr>
                                 <td><?= $annonce->html("titre") ?>
@@ -83,23 +93,22 @@
                                 </td>
                             </tr>
                         <?php endforeach; ?>
-                    </tbody>
-                     <tfoot>
+                        <?php endif; ?>
+                        <!-- Deuxième ligne : toujours affichée -->
                         <tr>
                             <td colspan="5" style="text-align: center;">
-                                <a href="ajouter.php?">
-                                    Créer une annonce ➕ 
+                                <a href="ajouter.php">
+                                    Créer une annonce ➕
                                 </a>
                             </td>
                         </tr>
-                    </tfoot>
+                    </tbody>
                 </table>
-                <?php endif; ?>
             </section>
 
             <!-- Mes enchères -->
             <section>
-                <h2>Mes enchères</h2>
+                <h2>Mes enchères 🤑🤑</h2>
                 <!-- Les enchères  -->
             </section>
 

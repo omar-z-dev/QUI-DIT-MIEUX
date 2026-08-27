@@ -19,7 +19,7 @@ echo "</pre>";*/
 
 //instancier une annonce pour recuperer les annonces de l'utilisateur connecté
 $annonce = new annonce();
-$mesAnnonces = $annonce->listAll();
+$mesAnnonces = $annonce->listAllByUser($utilisateur->id());
 
 // Afficher le template  
 require "templates/pages/afficher-dashboard.php";

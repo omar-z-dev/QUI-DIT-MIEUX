@@ -17,7 +17,7 @@
     </header>
 
     <main>
-        <h1> Bienvenue sur Qui Dit Mieux</h1>
+        <h1> Bienvenue sur Qui Dit Mieux  💵💵 </h1>
         <h2>Accueil publique</h2>
         <!-- Affichage les objets proposés -->
         <section>

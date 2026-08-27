@@ -26,7 +26,9 @@
             <?php unset($_SESSION["error_annonce"]); ?>
         <?php endif; ?>
 
-        <form action="valider-ajout-annonce.php"method="POST">
+        <!-- FORMULAIRE D'AJOUT D'UNE ANNONCE -->
+
+        <form action="valider-ajout-annonce.php"method="POST"  enctype="multipart/form-data">
             <!-- Titre -->
             <div>
                 <label for="titre">Titre :</label>
