@@ -45,7 +45,7 @@ $annonce->set("description", $description);
 $annonce->set("etat", $etat);
 $annonce->set("prix_depart", $prix_depart);
 $annonce->set("date_fin", $date_fin);
-$annonce->set("date_creation", date("Y-m-d H:i:s"));
+$annonce->set("date_creation", date("Y-m-d H:i"));
 $annonce->set("utilisateur_id", $_SESSION["id"]);
 
 // Insérer l'annonce
@@ -65,51 +65,74 @@ if (!$resultat) {
 $annonceId = $annonce->id();
 
 //TRAITER LA PHOTO
+// Vérifier si des photos ont été envoyées
+if (isset($_FILES["photos"])) {
+    /*$_FILES["photos"] = [
 
-if (
-    //Si l'utilisateur a ajouté une photo et qu'elle n'a pas eu d'erreur
-    isset($_FILES["photo"]) &&
-    $_FILES["photo"]["error"] === UPLOAD_ERR_OK
-) {
+            "name" => [
+                0 => "voiture.jpg",
+                1 => "interieur.jpg",
+                2 => "moteur.jpg"
+            ],
 
-    // Nom d'origine
-    $nomOriginal = $_FILES["photo"]["name"];
+            "tmp_name" => [
+                0 => "/tmp/phpAAA",
+                1 => "/tmp/phpBBB",
+                2 => "/tmp/phpCCC"
+            ],
 
-    // Fichier temporaire créé par PHP
-    $fichierTemporaire = $_FILES["photo"]["tmp_name"];
+            "error" => [
+                0 => 0,
+                1 => 0,
+                2 => 0
+            ]
+        ];*/
 
-    // Récupérer l'extension de la photo
-    $extension = strtolower(pathinfo($nomOriginal, PATHINFO_EXTENSION));
+    // Parcourir les photos car $_FILES["photos"] est un tableau de tableaux
+    foreach ($_FILES["photos"]["name"] as $index => $nomOriginal) {
 
-    // Extensions autorisées
-    $extensionsAutorisees = ["jpg", "jpeg", "png", "webp"];
+        // Vérifier cette photo
+        if ($_FILES["photos"]["error"][$index] === UPLOAD_ERR_OK) {
 
-    if (!in_array($extension, $extensionsAutorisees)) {
-        $_SESSION["error_annonce"] = "Format d'image non autorisé ❌";
-        header("Location: ajouter.php");
-        exit;
-    }
+            // Fichier temporaire
+            $fichierTemporaire = $_FILES["photos"]["tmp_name"][$index];
 
-    // Créer un nom unique
-    $nomFichier = uniqid("annonce_") . "." . $extension;
+            // Extension
+            $extension = strtolower(
+                pathinfo($nomOriginal, PATHINFO_EXTENSION)
+            );
 
-    // Dossier dans lequel stocker les images
-    $destination = "img/" . $nomFichier;
+            // Extensions autorisées
+            $extensionsAutorisees = ["jpg", "jpeg", "png", "webp"];
 
-    /*var_dump($_FILES);
-    exit;*/
+            if (!in_array($extension, $extensionsAutorisees)) {
+                continue;
+            }
 
-    // Déplacer la photo
-    if (move_uploaded_file($fichierTemporaire, $destination)) {
- 
-        // INSÉRER LA PHOTO DANS LA BDD
-        $photo = new photo();
+            // Nom unique
+            $nomFichier = uniqid("annonce_") . "." . $extension;
 
-        $photo->set("annonce_id", $annonceId);
-        $photo->set("fichier", $nomFichier);
-        $photo->set("principale", 1);
--
-        $photo->insert();
+            // Destination
+            $destination =  "img/" . $nomFichier;
+
+            // Déplacer l'image
+            if (move_uploaded_file($fichierTemporaire, $destination)) {
+
+                $photo = new photo();
+
+                $photo->set("annonce_id", $annonceId);
+                $photo->set("fichier", $nomFichier);
+
+                // Première photo = principale
+                if ($index === 0) {
+                    $photo->set("principale", 1);
+                } else {
+                    $photo->set("principale", 0);
+                }
+
+                $photo->insert();
+            }
+        }
     }
 }
 // SUCCÈS

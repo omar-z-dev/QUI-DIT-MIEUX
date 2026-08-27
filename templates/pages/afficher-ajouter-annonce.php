@@ -75,10 +75,14 @@
                 <label for="date_fin">Date de fin de l'enchère :</label>
                 <input type="datetime-local" name="date_fin" id="date_fin">
             </div>
-            <!-- Photo -->
+            <!-- Photo : multiples -->
             <div>
                 <label for="photo">Photo :</label>
-                <input type="file" name="photo" id="photo">
+                <input type="file"
+                        name="photos[]"
+                        id="photos"
+                        multiple
+                        accept="image/jpeg,image/png,image/webp">
             </div>
             <!-- Validation button -->
             <div>

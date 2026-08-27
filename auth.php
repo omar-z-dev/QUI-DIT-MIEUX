@@ -50,11 +50,10 @@ switch ($action) {
             exit;
         }
             //message d'erreur a afficher sur la page d'accueil
-            $_SESSION["error_login"] = "😱 Email ou mot de passe incorrect";
+            $_SESSION["error_login"] = "😱 Identifiant de connexion et/ou mot de passe incorrect";
             header("Location: auth.php?action=login");
             exit;
         }
-
           // Si on arrive en GET, afficher le formulaire
             require "templates/pages/afficher-page-connexion.php";
             break;
