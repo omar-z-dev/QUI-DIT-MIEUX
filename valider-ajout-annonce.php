@@ -10,7 +10,7 @@ require_once "libr/init.php";
 
 // Récupérer les données du formulaire
 $titre        = trim($_POST["titre"] ?? "");
-$categorie_id = $_POST["categorie_id"] ?? "";
+$categorie = $_POST["categorie"] ?? "";
 $description  = trim($_POST["description"] ?? "");
 $etat         = $_POST["etat"] ?? "";
 $prix_depart  = $_POST["prix_depart"] ?? "";
@@ -19,7 +19,7 @@ $date_fin     = $_POST["date_fin"] ?? "";
 // Vérifier que tous les champs sont remplis
 if (
     empty($titre) ||
-    empty($categorie_id) ||
+    empty($categorie) ||
     empty($description) ||
     empty($etat) ||
     empty($prix_depart) ||
@@ -27,7 +27,7 @@ if (
 ) {
     $_SESSION["error_annonce"] = "Tous les champs sont obligatoires ❌";
 
-    header("Location: annonce.php");
+    header("Location: ajouter.php");
     exit;
 }
 
@@ -36,7 +36,7 @@ $annonce = new annonce();
 
 // Remplir l'objet
 $annonce->set("titre", $titre);
-$annonce->set("categorie_id", $categorie_id);
+$annonce->set("categorie", $categorie);
 $annonce->set("description", $description);
 $annonce->set("etat", $etat);
 $annonce->set("prix_depart", $prix_depart);

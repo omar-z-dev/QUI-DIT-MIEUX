@@ -20,6 +20,11 @@
     <main>
         <h1>Qui Dit Mieux</h1>
         <h2>Créer une annonce</h2>
+        <!-- message d'erreur -->
+        <?php if (!empty($_SESSION["error_annonce"])): ?>
+            <p style="color:red; font-weight:bold;"><?= $_SESSION["error_annonce"] ?></p>
+            <?php unset($_SESSION["error_annonce"]); ?>
+        <?php endif; ?>
 
         <form action="valider-ajout-annonce.php"method="POST">
             <!-- Titre -->
@@ -29,8 +34,8 @@
             </div>
             <!-- Catégorie -->
             <div>
-                <label for="categorie_id">Catégorie :</label>
-                <select name="categorie_id" id="categorie_id">
+                <label for="categorie">Catégorie :</label>
+                <select name="categorie" id="categorie">
                     <option value="">-- Choisir une catégorie --</option>
                         <?php foreach ($categories as $code => $libelle): ?>
                             <option value="<?= htmlspecialchars($code) ?>">

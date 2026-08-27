@@ -9,7 +9,7 @@ class annonce extends _model {
     protected $fields = [
         "id",
         "titre",
-        "categorie_id",
+        "categorie",
         "description",
         "etat",
         "prix_depart",
