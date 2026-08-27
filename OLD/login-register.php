@@ -1,5 +1,8 @@
 <?php
-//role : afficher la page de login ou de register
+/*
+Rôle : afficher la page de connexion ou de création de compte
+Paramètres : action (login ou register) et les données du formulaire (identifiant, mot de passe, pseudo, email)
+*/
 
 // Récupération des paramètres pour differencier entre login ou register
 $action = $_GET["action"] ?? "";

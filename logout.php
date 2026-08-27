@@ -1,8 +1,15 @@
 <?php
-//role : fermer la session et rediriger vers la page d'accueil
+/*
+
+Rôle : fermer la session et rediriger vers la page d'accueil
+paramètres : aucun
+
+*/
+
+// Initialisation
+require_once "libr/init.php";
 
 // deconnecter l'utilisateur
-
 deconnect();
 
 //debug
@@ -12,6 +19,7 @@ echo "</pre>";*/
 
 //var_dump(isConnected());
 
-// Afficher le template  
-require "accueil.php";
+// Retour a l'accueil  
+header("Location: index.php");
+exit;
 

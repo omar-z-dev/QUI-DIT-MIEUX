@@ -12,8 +12,7 @@
         <div>
             <h1> Qui dit mieux</h1>
 
-            <!-- creer compte -->
-            <h2>Connexion</h2>
+            
 
             <!--------------- user et mdp test ----------------------->
             <h3 style = "color: yellowgreen;">mot de passe test et email test</h3>
@@ -28,6 +27,9 @@
                 <?php unset($_SESSION["error_login"]); ?>
             <?php endif; ?>
 
+            <!-- creer compte -->
+            <h2>Connexion</h2>
+
             <!-- login : connexion -->
             <form method="POST" action="auth.php?action=login">
                 <input type="text" name="identifiant" placeholder="Email ou pseudo"><br><br>
@@ -37,7 +39,7 @@
         </div>
 
         <!-- bouton retour accueil principal -->
-        <a href="index.php">Retour à l'accueil</a>
+        <a href="index.php"> ↩️ Retour à l'accueil</a>
        
     </body>
 </html>

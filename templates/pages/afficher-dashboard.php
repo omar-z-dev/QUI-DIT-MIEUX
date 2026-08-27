@@ -19,7 +19,7 @@
             <!-- Navigation -->
             <nav>
                 <a href="profil.php">Modifier mon profil</a>
-                <a href="index.php?page=logout">Déconnexion</a>
+                <a href="logout.php">Déconnexion</a>
             </nav>
         </header>
 
@@ -44,14 +44,14 @@
             <!-- Mes annonces -->
             <section>
 
-                <h2>Mes annonces</h2>
+                <h2>Mes annonces ✅</h2>
                 <?php if (empty($mesAnnonces)): ?>
 
                     <p>Vous n'avez aucune annonce.</p>
 
                 <?php else: ?>
 
-                <table border="1" cellpadding="5" cellspacing="5" bordercollapse="collapse">
+                <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
                     <thead>
                         <tr>
                             <th>Titre</th>
@@ -65,23 +65,20 @@
                     <tbody>
                         <?php foreach ($mesAnnonces as $annonce): ?>
                             <tr>
-                                <td>
-                                    <?= $annonce->html("titre") ?>
+                                <td><?= $annonce->html("titre") ?>
                                 </td>
-                                <td>
-                                    <?= $annonce->html("prix_depart") ?> €
+                                <td><?= $annonce->html("prix_depart") ?> €
                                 </td>
-                                <td>
-                                    <?= $annonce->html("date_fin") ?>
+                                <td><?= $annonce->html("date_fin") ?>
                                 </td>
                                 <td>
                                     <a href="annonce.php?action=update&id=<?= $annonce->id() ?>">
-                                        Modifier
+                                        Modifier 📝
                                     </a>
                                 </td>
                                 <td>
                                     <a href="annonce.php?action=delete&id=<?= $annonce->id() ?>">
-                                        Supprimer
+                                        Supprimer ❌
                                     </a>
                                 </td>
                             </tr>
@@ -90,8 +87,8 @@
                      <tfoot>
                         <tr>
                             <td colspan="5" style="text-align: center;">
-                                <a href="index.php?">
-                                    Créer une annonce
+                                <a href="ajouter.php?">
+                                    Créer une annonce ➕ 
                                 </a>
                             </td>
                         </tr>

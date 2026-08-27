@@ -1,8 +1,8 @@
 <?php
 /*
 
-Rôle : afficher la page dashboard
-param : neant
+Rôle : afficher la page dashboard de l'utilisateur connecté
+param : néant
 
 */
 
@@ -17,7 +17,7 @@ $utilisateur = userConnected();
 var_dump($utilisateur);
 echo "</pre>";*/
 
-//instanceoftier une annonce pour recuperer les annonces de l'utilisateur connecté
+//instancier une annonce pour recuperer les annonces de l'utilisateur connecté
 $annonce = new annonce();
 $mesAnnonces = $annonce->listAll();
 

@@ -1,18 +1,13 @@
 <?php
 /*
-
-Rôle : afficher la page accueil principale de l'application (sans être connecté) )
+Rôle : afficher la page d'ajout d'annonce
 paramètre : aucun
 
 */
 
 
-// Initialisation
+// Initialisations diverses
 require_once "libr/init.php";
-
-//Récupérer ttes les annonces
-$annonce = new annonce();
-$ListeAnnonces = $annonce->listAll();
 
 //Instacier un objet api
 $api = new api();
@@ -24,6 +19,7 @@ $categories = $api->getCategoryByCurl();
 var_dump($categories);
 echo "</pre>";*/
 
+
 // Afficher le template  
-require "templates/pages/afficher-accueil-principal.php";
+require "templates/pages/afficher-ajouter-annonce.php";
 
