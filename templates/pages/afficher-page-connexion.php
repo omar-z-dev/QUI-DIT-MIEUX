@@ -1,4 +1,12 @@
+<?php
+/*
 
+Rôle : afficher la page de connexion
+
+Paramètres : aucun
+
+*/
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

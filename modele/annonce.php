@@ -54,7 +54,7 @@ class annonce extends _model {
     /*=====================================================
       2.                 listAll by categorie
     =======================================================*/
-    function rechercherAnnonces($texte, $categorie, $etat, $prix, $vente){
+    /*function rechercherAnnonces($texte, $categorie, $etat, $prix, $vente){
         $sql = "SELECT " . $this->listFieldsForSql() . "
                 FROM `$this->table`
                 WHERE 1=1";
@@ -111,5 +111,5 @@ class annonce extends _model {
             $objets[] = $objet;
         }
         return $objets;
-    }
+    }*/
 }

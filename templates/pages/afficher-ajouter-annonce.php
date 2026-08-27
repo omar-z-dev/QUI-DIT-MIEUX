@@ -1,3 +1,13 @@
+<?php
+/*
+
+Rôle : afficher la page (formulaire) d'ajout d'annonce
+
+Paramètres : $categories : liste des categories de l'api
+
+*/
+/** @var array $categories */
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

@@ -10,7 +10,8 @@ li {
 }
 a {
   text-decoration: none;
-  color: #111010;
+  color: #2d4f0a;
+  font-weight: bold;
 }
 a:hover {
   text-decoration: underline 2px;
@@ -62,4 +63,13 @@ textarea {
 }
 textarea {
   resize: vertical;
+}
+/**************SCROLL BARRE LISTE ANNONCES*****************/
+
+.liste-annonces {
+  display: inline-block;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }

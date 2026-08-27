@@ -1,3 +1,14 @@
+<?php
+/*
+
+Rôle : afficher la page accueil principale de l'application (sans être connecté)
+
+Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
+
+*/
+/** @var array $ListeAnnonces */
+/** @var object  $categories */
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -21,51 +32,50 @@
         <h2>Accueil publique</h2>
         <!-- Affichage les objets proposés -->
         <section>
-
             <h3>Liste des objets proposés :</h3>
-            <?php if (empty($ListeAnnonces)): ?>
+            <div class="liste-annonces">
+                <?php if (empty($ListeAnnonces)): ?>
 
-                <p>Aucune annonce disponible</p>
+                    <p>Aucune annonce disponible</p>
 
-            <?php else: ?>
+                <?php else: ?>
 
-            <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <th>Titre</th>
-                        <th>Catégorie</th>
-                        <th>Description</th>
-                        <th>État</th>
-                        <th>Prix de départ</th>
-                        <th>Date de fin</th>
-                        <th>Date de création</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <?php foreach ($ListeAnnonces as $annonce): ?>
+                <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
+                    <thead>
                         <tr>
-                            <td><?= $annonce->html("titre") ?>
-                            </td>
-                            <td> <?= htmlspecialchars(
-                                    $categories->{$annonce->value("categorie")}
-                                ) ?>
-                            </td>
-                            <td><?= $annonce->html("description") ?>
-                            </td>
-                            <td><?= $annonce->html("etat") ?>
-                            </td>
-                            <td><?= $annonce->html("prix_depart") ?> €
-                            </td>
-                            <td><?= $annonce->html("date_fin") ?>
-                            </td>
-                            <td><?= $annonce->html("date_creation") ?>
-                            </td>
+                            <th>Titre</th>
+                            <th>Catégorie</th>
+                            <th>Prix de départ</th>
+                            <th>Date de fin</th>
+                            <th>Voir l'annonce</th>
+                            
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-            <?php endif; ?>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($ListeAnnonces as $annonce): ?>
+                            <tr>
+                                <td><?= $annonce->html("titre") ?>
+                                </td>
+                                <td> <?= htmlspecialchars(
+                                        $categories->{$annonce->value("categorie")}
+                                    ) ?>
+                                </td>
+                                <td><?= $annonce->html("prix_depart") ?> €
+                                </td>
+                                <td> <?= date("Y-m-d à H:i", strtotime($annonce->value("date_fin"))) ?>
+                                </td>
+                                <td>
+                                    <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                                        Voir detail 🧐
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <?php endif; ?>
+            </div>
         </section>
 
         <!-- Formulaire de recherche -->
@@ -108,7 +118,7 @@
 
                 <div>
                     <label for="prix">Prix maximum :</label>
-                    <input type="number" name="prix" id="prix" min="0" step="0.01">
+                    <input type="number" name="prix" id="prix" min="0">
                 </div>
 
                 <div>

@@ -1,3 +1,12 @@
+<?php
+/*
+
+Rôle : afficher la page dashboard de l'utilisateur connecté
+
+Paramètres : $mesAnnonces : annonces de l'utilisateur
+
+*/
+?>
 <!DOCTYPE html>
 <html lang="fr">
 

@@ -1,3 +1,12 @@
+<?php
+/*
+
+Rôle : afficher la page de inscription
+
+Paramètres : aucun
+
+*/
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +68,7 @@
         <!-- bouton retour accueil principal -->
         <a href="index.php"> ↩️ Retour à l'accueil</a>
 
+    <!-- sert à charger le code JavaScript de Google reCAPTCHA dans la page et creer la case -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
        
     </body>
