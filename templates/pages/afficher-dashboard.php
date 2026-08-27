@@ -20,10 +20,6 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
     </head>
 
     <body>
-
-        <!-- =========================
-            HEADER
-        ========================== -->
         <header>
             <!-- Navigation -->
             <nav>
@@ -31,10 +27,6 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
                 <a href="logout.php">Déconnexion</a>
             </nav>
         </header>
-
-        <!-- =========================
-            CONTENU PRINCIPAL
-        ========================== -->
         <main>
             <h1>Qui Dit Mieux 💵💵</h1>
             <section>
@@ -123,7 +115,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
 
             <!-- Annonces suivies -->
             <section>
-                <h2>Annonces suivies</h2>
+                <h2>Annonces suivies 👣</h2>
 
                 <!-- Les annonces suivies  -->
             </section>

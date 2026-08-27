@@ -45,11 +45,26 @@ Paramètres : id de l'annonce
         <!-- infos de l'annonce -->
          <p><strong>Catégorie : </strong><?= htmlspecialchars($libelleCategorie) ?></p>
 
-        <p><strong>Description : </strong><?= $annonce->html("description") ?></p>
+        <p><strong>Description : </strong><br>
+        <?= $annonce->html("description") ?></p>
         <p><strong>Description : </strong><?= $annonce->html("etat") ?></p>
         <p><strong>Prix de départ : </strong><?= $annonce->html("prix_depart") ?> €</p>
 
         <p><strong>Date de fin : </strong><?= $annonce->html("date_fin") ?></p>
+
+        <!-- formulaire d'enchère -->
+        <h2>Enchérir :</h2>
+        <form action="encherir.php" method="POST">
+            <input type="hidden" name="annonce_id" value="<?= $annonce->id() ?>">
+
+            <label for="montant">Votre enchère :</label>
+            <input
+                type="number" name="montant"
+                id="montant"
+                min="0">
+            <button type="submit">Enchérir 💰💰</button>
+        </form>    
     </main>
+
 </body>
 </html> 

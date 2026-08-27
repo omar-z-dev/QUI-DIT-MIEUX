@@ -1,7 +1,7 @@
 <?php
 
 /*
-Rôle : afficher le détail d'une annonce avec sa photo principale
+Rôle : extraire  et afficher une annonce avec sa photo principale
 Paramètre : id de l'annonce
 */
 
@@ -12,15 +12,10 @@ $id = $_GET["id"] ?? 0;
 
 //Charger l'annonce
 $annonce = new annonce();
-
 $annonce->load($id);
-
 
 // Code catégorie de l'annonce
 $codeCategorie = $annonce->value("categorie");
-
-echo $codeCategorie;
-
 
 // Récupérer les catégories depuis l'API
 $api = new api();
