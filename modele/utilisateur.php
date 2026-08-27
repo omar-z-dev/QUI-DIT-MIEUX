@@ -90,7 +90,7 @@ class utilisateur extends _model {
 /*=====================================================
       3.     recup l'objet utilsateur par son nom
 =======================================================*/
-    function findBy($field, $value) {
+    /*function findBy($field, $value) {
 
         $sql = "SELECT * FROM `$this->table`
                 WHERE $field = :value";
@@ -107,7 +107,7 @@ class utilisateur extends _model {
         $this->loadFromtab($lignes[0]);
 
         return $this->is();
-    }
+    }*/
 }
 
 

@@ -21,5 +21,14 @@ echo "</pre>";*/
 $annonce = new annonce();
 $mesAnnonces = $annonce->listAllByUser($utilisateur->id());
 
+// recup de toutes les annonces sauf celles de l'utilisateur connecté
+$ListeAnnonces = $annonce->listOtherAnnonces($utilisateur->id());
+
+//Instacier un objet api
+$api = new api();
+
+//Récupérer ttes les categories
+$categories = $api->getCategoryByCurl();
+
 // Afficher le template  
 require "templates/pages/afficher-dashboard.php";

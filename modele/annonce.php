@@ -112,4 +112,34 @@ class annonce extends _model {
         }
         return $objets;
     }*/
+
+        /*=====================================================
+      2.                 listAll by categorie
+    =======================================================*/
+    function listOtherAnnonces($utilisateurId){
+        // Rôle : récupérer toutes les annonces sauf celles
+        // de l'utilisateur connecté
+        // Paramètre : id utilisateur
+        // Retour : tableau d'objets annonce
+
+        $sql = "SELECT " . $this->listFieldsForSql() . "
+                FROM `$this->table`
+                WHERE utilisateur_id != :utilisateur_id";
+
+        $req = $this->execute($sql, [
+            ":utilisateur_id" => $utilisateurId
+        ]);
+
+        $lignes = $req->fetchAll(PDO::FETCH_ASSOC);
+        $objets = [];
+        $className = get_class($this);
+
+        foreach ($lignes as $ligne) {
+            $objet = new $className();
+            $objet->loadFromtab($ligne);
+            $objets[] = $objet;
+        }
+        return $objets;
+    }
+
 }

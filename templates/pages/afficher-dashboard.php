@@ -107,6 +107,55 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
                 </table>
             </section>
 
+            <!-- Autres annonces -->
+            <section>
+                <h2>Liste des autres annonces :</h2>
+                <div class="liste-annonces">
+                    <?php if (empty($ListeAnnonces)): ?>
+
+                        <p>Aucune annonce disponible</p>
+
+                    <?php else: ?>
+
+                    <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Catégorie</th>
+                                <th>Prix de départ</th>
+                                <th>Date de fin</th>
+                                <th>Voir l'annonce</th>
+                                
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <?php foreach ($ListeAnnonces as $annonce): ?>
+                                <tr>
+                                    <td><?= $annonce->html("titre") ?>
+                                    </td>
+                                    <td> <?= htmlspecialchars(
+                                            $categories->{$annonce->value("categorie")}
+                                        ) ?>
+                                    </td>
+                                    <td><?= $annonce->html("prix_depart") ?> €
+                                    </td>
+                                    <td> <?= date("Y-m-d à H:i", strtotime($annonce->value("date_fin"))) ?>
+                                    </td>
+                                    <td>
+                                        <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                                            Voir detail 🧐
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <?php endif; ?>
+                </div>
+            </section>
+
+
             <!-- Mes enchères -->
             <section>
                 <h2>Mes enchères 🤑🤑</h2>

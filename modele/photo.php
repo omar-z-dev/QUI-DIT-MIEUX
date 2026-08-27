@@ -18,7 +18,7 @@ class photo extends _model {
     ];
 
     /*=====================================================
-      1.     
+      1.     getPhotoPrincipale
     =======================================================*/
     function getPhotoPrincipale($annonceId){
         // Rôle : récupérer la photo principale d'une annonce
@@ -50,7 +50,6 @@ class photo extends _model {
 
         // Remplir l'objet avec les données récupérées
         $objet->loadFromtab($ligne);
-
         return $objet;
     }
 }
