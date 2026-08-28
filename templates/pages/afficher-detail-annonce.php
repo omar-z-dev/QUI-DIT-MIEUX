@@ -29,10 +29,17 @@ Paramètres : id de l'annonce
         </header>
         <main>
             <h1>Qui Dit Mieux</h1>
-              <!-- message  -->
+
+            <!-- message lié aux encheres -->
             <?php if (!empty($_SESSION["enchere"])): ?>
                 <p style="color:red; font-weight:bold;"><?= $_SESSION["enchere"] ?></p>
                 <?php unset($_SESSION["enchere"]); ?>
+            <?php endif; ?>
+
+            <!-- message lié aux suivi -->
+            <?php if (!empty($_SESSION["suivi"])): ?>
+                <p style="color:red; font-weight:bold;"><?= $_SESSION["suivi"] ?></p>
+                <?php unset($_SESSION["suivi"]); ?>
             <?php endif; ?>
 
             <!-------- detail de l'annonce ---------->
@@ -86,12 +93,29 @@ Paramètres : id de l'annonce
                 <form action="suivre-annonce.php" method="POST">
 
                     <input type="hidden" name="annonce_id" value="<?= $annonce->id() ?>">
-
-                    <button type="submit">⭐ Suivre cette annonce
-                    </button>
+                    <!----- Affichage conditionnel du bouton ----->
+                    <?php if ($estSuivie): ?>
+                        <button type="button" disabled>
+                            ⭐ Déjà suivie
+                        </button>
+                    <?php else: ?>
+                        <button type="submit">
+                            ⭐ Suivre cette annonce
+                        </button>
+                    <?php endif; ?>
 
                 </form>  
-            <?php endif; ?>  
+                
+            <?php endif; ?> 
+
+            <!---------retour------------->
+            
+            <?php if (!empty($_SESSION["connected"])): ?>
+                <a href="dashboard.php">↩️ Retour</a>
+            <?php else: ?>
+                <a href="index.php">↩️ Retour</a>
+            <?php endif; ?> 
+
         </main>
     </body>
 </html> 

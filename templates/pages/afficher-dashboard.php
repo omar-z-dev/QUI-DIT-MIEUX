@@ -37,7 +37,6 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
                 <p>
                     Gérez vos annonces et vos enchères depuis votre espace personnel.
                 </p>
-
             </section>
 
             <!-- Mes annonces -->
@@ -51,7 +50,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
                     <?php unset($_SESSION["success_annonce"]); ?>
                 <?php endif; ?>
 
-                <!-- message aucune annonce dispo -->    
+                <!--Tables des annonces -->    
             
                 <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
                     <thead>
@@ -74,26 +73,26 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
                             </tr>
                         <?php else: ?>
 
-                        <?php foreach ($mesAnnonces as $annonce): ?>
-                            <tr>
-                                <td><?= $annonce->html("titre") ?>
-                                </td>
-                                <td><?= $annonce->html("prix_depart") ?> €
-                                </td>
-                                <td><?= $annonce->html("date_fin") ?>
-                                </td>
-                                <td>
-                                    <a href="annonce.php?action=update&id=<?= $annonce->id() ?>">
-                                        Modifier 📝
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="annonce.php?action=delete&id=<?= $annonce->id() ?>">
-                                        Supprimer ❌
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+                            <?php foreach ($mesAnnonces as $annonce): ?>
+                                <tr>
+                                    <td><?= $annonce->html("titre") ?>
+                                    </td>
+                                    <td><?= $annonce->html("prix_depart") ?> €
+                                    </td>
+                                    <td><?= $annonce->html("date_fin") ?>
+                                    </td>
+                                    <td>
+                                        <a href="annonce.php?action=update&id=<?= $annonce->id() ?>">
+                                            Modifier 📝
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="annonce.php?action=delete&id=<?= $annonce->id() ?>">
+                                            Supprimer ❌
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         <?php endif; ?>
                         <!-- Deuxième ligne : toujours affichée -->
                         <tr>
@@ -120,6 +119,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
                     <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
                         <thead>
                             <tr>
+                                <th>Propriétaire</th>
                                 <th>Titre</th>
                                 <th>Catégorie</th>
                                 <th>Prix de départ</th>
@@ -132,6 +132,9 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
                         <tbody>
                             <?php foreach ($ListeAnnonces as $annonce): ?>
                                 <tr>
+                                    <td>
+                                        <?= $annonce->get("utilisateur_id")->html("pseudo") ?>
+                                    </td>
                                     <td><?= $annonce->html("titre") ?>
                                     </td>
                                     <td> <?= htmlspecialchars(

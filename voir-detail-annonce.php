@@ -14,6 +14,17 @@ $id = $_GET["id"] ?? 0;
 $annonce = new annonce();
 $annonce->load($id);
 
+
+//Vérifier si annonce déja suivi par l'utilisateur
+$suivi = new suivi();
+
+if ($suivi->estSuivie($_SESSION["id"], $id)) {
+    $estSuivie = true;
+} else {
+    $estSuivie = false;
+}
+
+
 // Code catégorie de l'annonce
 $codeCategorie = $annonce->value("categorie");
 

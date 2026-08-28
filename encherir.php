@@ -2,7 +2,7 @@
 
 /*
 
-Rôle : enregistrer une enchère sur une annonce
+Rôle : enregistrer une enchère sur une annonce dans la BDD
 
 Paramètres :
 - annonce_id

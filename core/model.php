@@ -91,7 +91,7 @@ class _model {
                         Methode get($nom) 
     =======================================================*/
     function get($nom) {
-        // Rôle : récupérer l'atribut $nom (valeur dans le modèle conceptuel : pour un champ correspondant à un lien, on récupère l'objet pointé)
+        // Rôle : récupérer l'attribut $nom (valeur dans le modèle conceptuel : pour un champ correspondant à un lien, on récupère l'objet pointé)
         // Paramètres : 
         //      $nom : nom de l'atrribut
         // Retour : l'attribut (valeur directe ou objet) ou ull si inexistant

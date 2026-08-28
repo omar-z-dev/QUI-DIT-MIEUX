@@ -33,6 +33,10 @@ h1 {
 h2 {
   color: #2535a1;
 }
+h3 {
+  color: #624b1b;
+}
+
 /********************* FORMULAIRE *************************/
 form {
   background-color: rgb(218, 208, 208);

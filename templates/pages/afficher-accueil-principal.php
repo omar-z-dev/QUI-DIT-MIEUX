@@ -31,10 +31,10 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
         <h1> Bienvenue sur Qui Dit Mieux  💵💵 </h1>
         <h2>Accueil publique</h2>
         <p>
-            Qui Dit Mieux est une application permettant aux utilisateurs de vendre et acheter des objets.
+            Nous sommes QuiDitMieux, une plateforme d’enchères entre particulier permettant aux utilisateurs de vendre et acheter des objets.<br><br>
 
             Pour proposer, encherir ou suivre une annonce, il faut <strong>s'inscrire</strong> ou <strong>se connecter</strong>.
-        </p>
+        </p><br>
         <!-- Affichage les objets proposés -->
         <section>
             <h3>Liste des objets proposés :</h3>
