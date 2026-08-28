@@ -22,7 +22,7 @@ $meilleureEnchere = $enchere->getMeilleureEnchere($annonceId);
 
 if ($meilleureEnchere) {
 
-    $_SESSION["annonce"] ="Impossible de modifier cette annonce car une enchère existe déjà ❌";
+    $_SESSION["annonce"] = 'Impossible de modifier l\'annonce " ' . $annonce->html("titre") . ' " car une enchère existe déjà ❌';
 
     header("Location: dashboard.php");
     exit;
@@ -31,7 +31,6 @@ if ($meilleureEnchere) {
 // Catégories pour la codelist déroulante
 $api = new api();
 $categories = $api->getCategoryByCurl();
-
 
 
 // afficher la page de modification d'une annonce

@@ -100,8 +100,9 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="supprimer-annonce.php?&id=<?= $annonce->id() ?>">
+                                        <a href="supprimer-annonce.php?&id=<?= $annonce->id() ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');">
                                             Supprimer ❌
+
                                         </a>
                                     </td>
                                     <td>
