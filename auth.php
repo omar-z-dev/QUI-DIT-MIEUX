@@ -145,7 +145,6 @@ switch ($action) {
                 exit;
         }
            
-        
         // Si on arrive en GET : afficher le formulaire
         require "templates/pages/afficher-page-inscription.php";
         break;
