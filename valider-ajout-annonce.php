@@ -1,7 +1,7 @@
 <?php
 /*
 
-Rôle : valider l'ajout d'une annonce et photos dans la BDD de l'utilisateur connecté 
+Rôle : Enregistrer une annonce et photos dans la BDD de l'utilisateur connecté 
 
 Paramètre : les données du formulaire (titre, categorie, description, etat, prix_depart, date_fin et photo)
 
@@ -29,7 +29,7 @@ if (
     empty($prix_depart) ||
     empty($date_fin)
 ) {
-    $_SESSION["error_annonce"] = "Tous les champs sont obligatoires ❌";
+    $_SESSION["error_annonce"] = "Veuillez renseigner tous les champs obligatoires. L'ajout de photos est facultatif. ❌";
 
     header("Location: ajouter-annonce.php");
     exit;
@@ -59,7 +59,6 @@ if (!$resultat) {
     header("Location: ajouter-annonce.php");
     exit;
 }
-
 
 //Récup id de l'Annonce
 $annonceId = $annonce->id();
@@ -94,7 +93,7 @@ if (isset($_FILES["photos"])) {
         // Vérifier cette photo
         if ($_FILES["photos"]["error"][$index] === UPLOAD_ERR_OK) {
 
-            // Fichier temporaire
+            // Récupèrer l'emplacement temporaire où PHP a stocké la photo envoyée par l'utilisateur.
             $fichierTemporaire = $_FILES["photos"]["tmp_name"][$index];
 
             // Extension
@@ -109,17 +108,18 @@ if (isset($_FILES["photos"])) {
                 continue;
             }
 
-            // Nom unique
+            // Création d'un nom unique pour eviter les doublons
             $nomFichier = uniqid("annonce_") . "." . $extension;
 
             // Destination
             $destination =  "img/" . $nomFichier;
 
-            // Déplacer l'image
+            // Déplacer l'image temporaire vers la destination
             if (move_uploaded_file($fichierTemporaire, $destination)) {
 
+                // Instancier un objet photo
                 $photo = new photo();
-
+                // Remplir l'objet photo
                 $photo->set("annonce_id", $annonceId);
                 $photo->set("fichier", $nomFichier);
 
@@ -129,7 +129,7 @@ if (isset($_FILES["photos"])) {
                 } else {
                     $photo->set("principale", 0);
                 }
-
+                // Insérer la photo dans la base
                 $photo->insert();
             }
         }
@@ -137,20 +137,9 @@ if (isset($_FILES["photos"])) {
 }
 // SUCCÈS
 $_SESSION["success_annonce"] = "✅ Annonce créée avec succès";
-
 header("Location: dashboard.php");
 exit;
 
-/* if ($resultat) {
 
-    $_SESSION["success_annonce"] = "✅ Annonce créée avec succès";
 
-    header("Location: dashboard.php");
-    exit;
-}
 
-// Erreur
-$_SESSION["error_annonce"] = "Erreur lors de la création de l'annonce ❌";
-
-header("Location: ajouter-annonce.php");
-exit;*/

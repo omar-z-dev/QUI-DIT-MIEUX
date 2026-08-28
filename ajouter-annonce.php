@@ -1,10 +1,9 @@
 <?php
 /*
 Rôle : afficher la page (formulaire) d'ajout d'annonce
-paramètre : aucun
+paramètre : l'objet $categories : liste des categories de l'api
 
 */
-
 
 // Initialisations diverses
 require_once "libr/init.php";
