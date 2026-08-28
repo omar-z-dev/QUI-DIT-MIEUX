@@ -18,7 +18,7 @@ Paramètres : aucun
     </head>
     <body>
         <div>
-            <h1> Qui dit mieux</h1>
+            <h1>QuiDitMieux</h1>
 
             <!--------------- user et mdp test ----------------------->
             <h3 style = "color: yellowgreen;">mot de passe test et email test</h3>
@@ -32,14 +32,21 @@ Paramètres : aucun
             <?php endif; ?>
 
             <!-- connexion-->
-            <h2>Connexion</h2>
-            <p>Vous pouvez vous connecter en remplissant le formulaire ci-dessous</p>
+            <h2>Se connecter</h2>
+            <p>Vous pouvez vous connecter en remplissant le formulaire ci-dessous </p>
 
             <!-- login : connexion -->
             <form method="POST" action="auth.php?action=login">
+                <label for="identifiant">Email ou pseudo :</label>
                 <input type="text" name="identifiant" placeholder="Email ou pseudo"><br><br>
+                <label for="password">Mot de passe :</label>
                 <input type="password" name="password" placeholder="Mot de passe"><br><br>
-                <button type="submit">Se connecter</button>
+                <button class="login" type="submit">Se connecter</button>
+                <!-- Si vous avez deja un compte Se connecter -->
+                <p>
+                    Vous n'avez pas de compte ?
+                    <a href="auth.php?action=register">Créer un compte</a>
+                </p>
             </form><br><br>
         </div>
 

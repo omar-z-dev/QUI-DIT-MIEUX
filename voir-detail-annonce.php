@@ -18,12 +18,12 @@ $annonce->load($id);
 //Vérifier si annonce déja suivi par l'utilisateur
 $suivi = new suivi();
 
-if ($suivi->estSuivie($_SESSION["id"], $id)) {
-    $estSuivie = true;
-} else {
-    $estSuivie = false;
-}
+// Vérifier si l'utilisateur est connecté
+$utilisateurId = $_SESSION["id"] ?? null;
 
+$estSuivie = $utilisateurId !== null
+    ? $suivi->estSuivie($utilisateurId, $id)
+    : false;
 
 // Code catégorie de l'annonce
 $codeCategorie = $annonce->value("categorie");

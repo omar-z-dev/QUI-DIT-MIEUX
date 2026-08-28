@@ -8,7 +8,8 @@ Paramètres : id de l'annonce
 */
 
 /** @var photo $photoPrincipale */
-/** @var string  $libelleCategorie */
+/** @var string $libelleCategorie */
+/** @var object $meilleureEnchere */
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +29,7 @@ Paramètres : id de l'annonce
             </nav>
         </header>
         <main>
-            <h1>Qui Dit Mieux</h1>
+            <h1>QuiDitMieux</h1>
 
             <!-- message lié aux encheres -->
             <?php if (!empty($_SESSION["enchere"])): ?>
@@ -61,7 +62,7 @@ Paramètres : id de l'annonce
             <!-- infos de l'annonce -->
             <p><strong>Catégorie : </strong><?= htmlspecialchars($libelleCategorie) ?></p>
 
-            <p><strong>Description : </strong><br>
+            <p><strong>Description : </strong><br><br>
             <?= $annonce->html("description") ?></p>
             <p><strong>Etat : </strong><?= $annonce->html("etat") ?></p>
             <p><strong>Prix de départ : </strong><?= $annonce->html("prix_depart") ?> €</p>
@@ -111,6 +112,7 @@ Paramètres : id de l'annonce
                 <form action="suivre-annonce.php" method="POST">
 
                     <input type="hidden" name="annonce_id" value="<?= $annonce->id() ?>">
+
                     <!----- Affichage conditionnel du bouton ----->
                     <?php if ($estSuivie): ?>
                         <button type="button" disabled>

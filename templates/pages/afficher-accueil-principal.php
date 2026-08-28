@@ -28,7 +28,7 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
     </header>
 
     <main>
-        <h1> Bienvenue sur Qui Dit Mieux  💵💵 </h1>
+        <h1> Bienvenue sur QuiDitMieux  💵💵 </h1>
         <h2>Accueil publique</h2>
         <p>
             Nous sommes QuiDitMieux, une plateforme d’enchères entre particulier permettant aux utilisateurs de vendre et acheter des objets.<br><br>

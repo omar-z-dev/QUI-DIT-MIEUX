@@ -19,7 +19,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Dashboard - Qui Dit Mieux</title>
+        <title>Dashboard-QuiDitMieux</title>
 
         <link rel="stylesheet" href="css/style.css">
     </head>
@@ -33,7 +33,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
             </nav>
         </header>
         <main>
-            <h1>Qui Dit Mieux 💵💵</h1>
+            <h1>QuiDitMieux 💵💵</h1>
             <section>
                 <h2>
                     Bienvenue sur votre dashboard
@@ -94,7 +94,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="annonce.php?action=delete&id=<?= $annonce->id() ?>">
+                                        <a href="supprimer-annonce.php?&id=<?= $annonce->id() ?>">
                                             Supprimer ❌
                                         </a>
                                     </td>

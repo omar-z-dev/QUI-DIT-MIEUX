@@ -64,7 +64,7 @@ $enchere = new enchere();
 $meilleureEnchere = $enchere->getMeilleureEnchere($annonceId);
 
 
-// Si aucune enchère n'existe encore
+// Si aucune enchère n'existe encore, vérifier que l'enchère est supérieure au prix de départ, sinon afficher un message d'erreur
 if (!$meilleureEnchere) {
 
     if ($montant <= $annonce->value("prix_depart")) {
@@ -77,14 +77,14 @@ if (!$meilleureEnchere) {
     }
 }
 
-// Si une enchère existe déjà
+// Si une enchère existe déjà, vérifier que l'enchère est supérieure à l'enchère actuelle, sinon afficher un message d'erreur
 else {
 
     if ($montant <= $meilleureEnchere->value("montant")) {
 
         $_SESSION["enchere"] =
             "Votre enchère doit être supérieure à l'enchère actuelle ❌";
-        header("Location: detail-annonce.php?id=" . $annonceId);
+        header("Location: voir-detail-annonce.php?id=" . $annonceId);
         exit;
     }
 }
@@ -92,13 +92,14 @@ else {
 // Créer la nouvelle enchère
 $nouvelleEnchere = new enchere();
 
+// Remplir la nouvelle enchère
 $nouvelleEnchere->set("annonce_id", $annonceId);
 $nouvelleEnchere->set("utilisateur_id", $_SESSION["id"]);
 $nouvelleEnchere->set("montant", $montant);
 $nouvelleEnchere->set("date_enchere",date("Y-m-d H:i")
 );
 
-// Insérer en BDD
+// Insérer en BDD la nouvelle enchère
 $resultat = $nouvelleEnchere->insert();
 
 // Si succès

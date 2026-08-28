@@ -3,6 +3,7 @@
 body {
   font-family: Arial, sans-serif;
   background: #e7dcdc;
+  margin: 2rem;
 }
 
 li {
@@ -36,6 +37,18 @@ h2 {
 h3 {
   color: #624b1b;
 }
+.login {
+  border: none;
+  background-color: #1f244a;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 95%;
+}
+
+.login:hover {
+  background-color: #2e45f1;
+}
 
 /********************* FORMULAIRE *************************/
 form {
@@ -59,7 +72,7 @@ label {
 input,
 select,
 textarea {
-  width: 50%;
+  width: 90%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -68,7 +81,7 @@ textarea {
 textarea {
   resize: vertical;
 }
-/**************SCROLL BARRE LISTE ANNONCES*****************/
+/************** SCROLL BARRE LISTE ANNONCES *****************/
 
 .liste-annonces {
   display: inline-block;

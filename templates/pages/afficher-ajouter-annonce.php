@@ -14,22 +14,21 @@ Paramètres : $categories : liste des categories de l'api
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Créer une annonce - Qui Dit Mieux</title>
+    <title>Créer une annonce-QuiDitMieux</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
         <nav>
             <a href="dashboard.php">Mon Dashboard</a>
-
-            <a href="logout.php">
-                Déconnexion
-            </a>
+            <a href="logout.php">Me deconnecter</a>
         </nav>
     </header>
     <main>
-        <h1>Qui Dit Mieux</h1>
+        <h1>QuiDitMieux</h1>
         <h2>Créer une annonce</h2>
+        <p>Remplissez le formulaire ci-dessous puis validez pour créer une nouvelle annonce :</p>
+        <p>Vous pouvez importer une ou plusieurs photos à votre annonce. L'ajout de photos est facultatif.</p>
         <!-- message d'erreur -->
         <?php if (!empty($_SESSION["error_annonce"])): ?>
             <p style="color:red; font-weight:bold;"><?= $_SESSION["error_annonce"] ?></p>
@@ -87,7 +86,7 @@ Paramètres : $categories : liste des categories de l'api
             </div>
             <!-- Photo : multiples -->
             <div>
-                <label for="photo">Photo :</label>
+                <label for="photo">Photo(s) :</label>
                 <input type="file"
                         name="photos[]"
                         id="photos"
