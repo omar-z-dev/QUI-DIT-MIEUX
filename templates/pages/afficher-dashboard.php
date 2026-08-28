@@ -120,7 +120,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
 
             <!-- Autres annonces -->
             <section>
-                <h2>Liste des autres annonces :</h2>
+                <h2>Liste des autres annonces 📋</h2>
                 <p>Vous pouvez consulter le détail d'une annonce, puis enchérir ou la suivre.</p>
                 <div class="liste-annonces">
                     <?php if (empty($ListeAnnonces)): ?>
@@ -169,6 +169,10 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                     </table>
                     <?php endif; ?>
                 </div>
+            </section>
+            <section>
+                <h2>Rechercher une annonce 🔍</h2>
+            
             </section>
 
 
