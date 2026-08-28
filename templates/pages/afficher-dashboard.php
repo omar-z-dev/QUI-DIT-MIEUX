@@ -56,6 +56,12 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                     <?php unset($_SESSION["success_annonce"]); ?>
                 <?php endif; ?>
 
+                <!-- message pour modification d'annonce -->
+                <?php if (isset($_SESSION["annonce"])): ?>
+                    <p style="color:red; font-weight:bold;"><?= $_SESSION["annonce"] ?></p>
+                    <?php unset($_SESSION["annonce"]); ?>
+                <?php endif; ?>
+
                 <!--Tables des annonces -->    
             
                 <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
@@ -89,7 +95,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                     <td><?= $annonce->html("date_fin") ?>
                                     </td>
                                     <td>
-                                        <a href="annonce.php?action=update&id=<?= $annonce->id() ?>">
+                                        <a href="modifier-annonce.php?&id=<?= $annonce->id() ?>">
                                             Modifier 📝
                                         </a>
                                     </td>
