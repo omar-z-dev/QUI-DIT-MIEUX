@@ -33,28 +33,22 @@ Paramètres :
             <h1>QuiDitMieux</h1>
 
             <h2>Modifier l'annonce</h2>
-            <!-- MESSAGE ERREUR -->
 
-            <?php if (!empty($_SESSION["error_annonce"])): ?>
+            <!-------- FORMUlaire de modification --------->
+            <!-------- FORMUlaire de modification --------->
 
-                <p style="color:red; font-weight:bold;">
-                    <?= $_SESSION["error_annonce"] ?></p>
+            <form action="valider-modifier-annonce.php"  method="POST" enctype="multipart/form-data">
 
-                <?php unset($_SESSION["error_annonce"]); ?>
-
-            <?php endif; ?>
-
-            <form action="modifier-annonce.php"  method="POST" enctype="multipart/form-data">
-                <!-- ID DE L'ANNONCE -->
+                <!-- id -->
                 <input  type="hidden" name="annonce_id" value="<?= $annonce->id() ?>">
 
-                <!-- TITRE -->
+                <!-- titre -->
                 <div>
                     <label for="titre">Titre :</label>
 
                     <input  type="text" name="titre"  id="titre" value="<?= $annonce->html("titre") ?>">
                 </div>
-                <!-- CATÉGORIE -->
+                <!-- categorie -->
                 <div>
 
                     <label for="categorie">Catégorie :</label>
@@ -62,7 +56,6 @@ Paramètres :
                         <option value="">-- Choisir une catégorie --</option>
 
                         <?php foreach ($categories as $code => $libelle): ?>
-
                             <option
                                 value="<?= htmlspecialchars($code) ?>"
 
@@ -76,14 +69,14 @@ Paramètres :
                     </select>
                 </div>
 
-                <!-- DESCRIPTION -->
+                <!-- Description -->
                 <div>
                     <label for="description">Description :</label>
                     <textarea name="description" id="description"
                         rows="5" ><?= $annonce->html("description") ?></textarea>
                 </div>
 
-                <!-- ÉTAT -->
+                <!-- etat -->
                 <div>
                     <label for="etat">État de l'objet :</label>
 
@@ -112,7 +105,7 @@ Paramètres :
                     </select>
 
                 </div>
-                <!-- PRIX -->
+                <!-- prixx -->
                 <div>
                     <label for="prix_depart"> Prix de départ :</label>
                     <input
@@ -120,7 +113,7 @@ Paramètres :
                         min="0" value="<?= $annonce->html("prix_depart") ?>" > €
                 </div>
 
-                <!-- DATE FIN -->
+                <!-- date de fin -->
 
                 <div>
 
@@ -131,7 +124,7 @@ Paramètres :
                             strtotime($annonce->value("date_fin"))) ?>" >
                 </div>
 
-                <!-- PHOTOS ACTUELLES -->
+                <!--photos  -->
 
                 <div>
                     <p>Photo(s) actuelle(s) :</p>
@@ -149,13 +142,13 @@ Paramètres :
                     <?php endif; ?>
                 </div>
 
-                <!-- AJOUTER DE NOUVELLES PHOTOS -->
+                <!-- ajouter photo -->
                 <div>
                     <label for="photos">Ajouter des photos :</label>
                     <input type="file" name="photos[]"
                         id="photos" multiple accept="image/jpeg,image/png,image/webp">
                 </div>
-                <!-- VALIDER -->
+                <!-- valider -->
                 <div>
                     <button type="submit">Valider les modifications ✔️
                     </button>
