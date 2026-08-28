@@ -40,5 +40,11 @@ $photo = new photo();
 
 $photoPrincipale = $photo->getPhotoPrincipale($id);
 
-// Afficher la page
+
+// Chercher la meilleure enchère existante
+$enchere = new enchere();
+
+$meilleureEnchere = $enchere->getMeilleureEnchere($id);
+
+// Afficher la page détail annonce
 require "templates/pages/afficher-detail-annonce.php";

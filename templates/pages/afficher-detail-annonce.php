@@ -68,11 +68,29 @@ Paramètres : id de l'annonce
 
             <p><strong>Date de fin : </strong><?= $annonce->html("date_fin") ?></p>
 
-            
+
+            <!-- Infos enchere sur l'annonce -->
+             <h2>Enchère sur l'annonce :</h2>
+            <?php if ($meilleureEnchere): ?>
+
+                <p>
+                    <strong>Meilleure enchère actuelle :</strong>
+                    <?= $meilleureEnchere->html("montant") ?> €
+                </p>
+            <?php else: ?>
+
+                <p>
+                    <strong>Prix actuel :</strong>
+                    <?= $annonce->html("prix_depart") ?> €
+                </p>
+                <p>Aucune enchère pour le moment.</p>
+
+            <?php endif; ?>
+
             <!-- formulaire d'enchère pour l'utilisateur connecté -->
             <!-- formulaire d'enchère pour l'utilisateur connecté -->
 
-            <?php if (!empty($_SESSION["connected"])): ?>
+            <?php if (!empty($_SESSION["connected"]) && $_SESSION["id"] != $annonce->value("utilisateur_id")): ?>
                 <h2>Enchérir :</h2>
                 <form action="encherir.php" method="POST">
 
@@ -109,7 +127,7 @@ Paramètres : id de l'annonce
             <?php endif; ?> 
 
             <!---------retour------------->
-            
+
             <?php if (!empty($_SESSION["connected"])): ?>
                 <a href="dashboard.php">↩️ Retour</a>
             <?php else: ?>

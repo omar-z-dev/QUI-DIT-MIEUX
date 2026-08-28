@@ -29,7 +29,7 @@ if (empty($annonceId) || $montant === "") {
 // Vérifier que le montant est numérique
 if (!is_numeric($montant) || $montant <= 0) {
 
-    $_SESSION["enchere"] = "Montant invalide ❌";
+    $_SESSION["enchere"] = "Montant doit etre un nombre positif ❌";
     header("Location: voir-detail-annonce.php?id=" . $annonceId);
     exit;
 }
@@ -37,17 +37,14 @@ if (!is_numeric($montant) || $montant <= 0) {
 // Charger l'annonce
 $annonce = new annonce();
 
-if (!$annonce->load($annonceId)) {
-    header("Location: index.php");
-    exit;
-}
+// Charger l'annonce
+$annonce->load($annonceId);
 
-// Vérifier que l'utilisateur n'enchérit pas sur sa propre annonce
+// Vérifier que l'utilisateur n'enchérit pas sur sa propre annonce meme si déja controle posé dans le html  ( btn encherir invisible si annonce de l'utilisateur)
 if ($annonce->value("utilisateur_id") == $_SESSION["id"]) {
 
     $_SESSION["enchere"] =
         "Vous ne pouvez pas enchérir sur votre propre annonce ❌";
-
     header("Location: voir-detail-annonce.php?id=" . $annonceId);
     exit;
 }
@@ -56,7 +53,7 @@ if ($annonce->value("utilisateur_id") == $_SESSION["id"]) {
 if (strtotime($annonce->value("date_fin")) <= time()) {
 
     $_SESSION["enchere"] =
-        "Cette vente est terminée ❌";
+        "Cette vente est terminée, vous ne pouvez plus encherir ❌";
     header("Location: voir-detail-annonce.php?id=" . $annonceId);
     exit;
 }

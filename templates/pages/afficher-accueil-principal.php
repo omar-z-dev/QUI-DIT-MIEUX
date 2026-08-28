@@ -23,7 +23,7 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
         <!-- Navigation creation de compte et connexion -->
         <nav>
             <a href="auth.php?action=register">Créer un compte</a>
-            <a href="auth.php?action=login">Connexion</a>
+            <a href="auth.php?action=login">Me connecter</a>
         </nav>
     </header>
 

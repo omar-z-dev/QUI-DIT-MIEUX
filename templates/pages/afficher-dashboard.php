@@ -1,9 +1,14 @@
 <?php
 /*
 
-Rôle : afficher la page dashboard de l'utilisateur connecté
+Rôle : afficher la page dashboard de l'utilisateur connecté elle contient : 
+- mes annonces : les annonces de l'utilisateur
+- les autres annonces : les annonces des autres utilisateurs
+- mes encheres : les encheres de l'utilisateur
+- annonces suivies : les annonces suivies de l'utilisateur
 
-Paramètres : $mesAnnonces : annonces de l'utilisateur
+Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
+             $ListeAnnonces : annonces des autres utilisateurs
 
 */
 ?>
@@ -24,7 +29,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
             <!-- Navigation -->
             <nav>
                 <a href="profil.php">Modifier mon profil</a>
-                <a href="logout.php">Déconnexion</a>
+                <a href="logout.php">Me deconnecter</a>
             </nav>
         </header>
         <main>
@@ -43,6 +48,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
             <section>
 
                 <h2>Mes annonces ✅</h2>
+                <p>Liste de mes annonces</p>
 
                 <!-- message apres ajout d'une annonce -->
                 <?php if (isset($_SESSION["success_annonce"])): ?>
@@ -60,6 +66,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
                             <th>Date de fin</th>
                             <th>Modifier</th>
                             <th>Supprimer</th>
+                            <th>Voir</th>
                         </tr>
                     </thead>
 
@@ -91,6 +98,11 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
                                             Supprimer ❌
                                         </a>
                                     </td>
+                                    <td>
+                                        <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                                            Voir detail 🧐
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
@@ -109,6 +121,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur
             <!-- Autres annonces -->
             <section>
                 <h2>Liste des autres annonces :</h2>
+                <p>Vous pouvez consulter le détail d'une annonce, puis enchérir ou la suivre.</p>
                 <div class="liste-annonces">
                     <?php if (empty($ListeAnnonces)): ?>
 

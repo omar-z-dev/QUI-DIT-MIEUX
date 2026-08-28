@@ -21,7 +21,9 @@ Paramètres : aucun
         <div>
 
             <!-- creer compte -->
+            <h1> Qui dit mieux</h1>
             <h2>Inscription</h2>
+            <p>Vous pouvez vous inscrire en remplissant le formulaire ci-dessous</p>
 
 
             <!-- register : creation de compte-->
@@ -62,11 +64,20 @@ Paramètres : aucun
 
                 <button type="submit">S'inscrire</button>
 
+                <!-- Si vous avez deja un compte Se connecter -->
+                <p>
+                    Vous avez déjà un compte ?
+                    <a href="auth.php?action=login">Se connecter</a>
+                </p>
+
             </form>
+            
         </div>
+        
 
         <!-- bouton retour accueil principal -->
         <a href="index.php"> ↩️ Retour à l'accueil</a>
+        
 
     <!-- sert à charger le code JavaScript de Google reCAPTCHA dans la page et creer la case -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>

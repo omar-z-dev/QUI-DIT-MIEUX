@@ -135,7 +135,7 @@ switch ($action) {
 
                 //message de confirmation de creation de compte
                 $_SESSION["success_register"] = "✅ Compte créé avec succes";
-                header("Location: auth.php?action=login");
+                header("Location: auth.php?action=register");
                 exit;
             
             }

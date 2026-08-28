@@ -31,8 +31,9 @@ Paramètres : aucun
                 <?php unset($_SESSION["error_login"]); ?>
             <?php endif; ?>
 
-            <!-- creer compte -->
+            <!-- connexion-->
             <h2>Connexion</h2>
+            <p>Vous pouvez vous connecter en remplissant le formulaire ci-dessous</p>
 
             <!-- login : connexion -->
             <form method="POST" action="auth.php?action=login">
