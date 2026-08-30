@@ -36,13 +36,6 @@ Paramètres : aucun
                     <?php unset($_SESSION["error_register"]); ?>
                 <?php endif; ?>
 
-                <!-- message succes de creation de compte  -->
-                 
-                <?php if (!empty($_SESSION["success_register"])): ?>
-                    <p style="color:green; font-weight:bold;"><?= $_SESSION["success_register"] ?></p>
-                    <?php unset($_SESSION["success_register"]); ?>
-                <?php endif; ?>
-
                 <!-- message erreur recaptcha  -->
                  
                 <?php if (!empty($_SESSION["error_recaptcha"])): ?>

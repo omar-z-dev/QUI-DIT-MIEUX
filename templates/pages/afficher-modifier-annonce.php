@@ -39,7 +39,7 @@ Paramètres :
             <!-------- FORMUlaire de modification --------->
 
             <form action="valider-modifier-annonce.php"  method="POST" enctype="multipart/form-data">
-                
+
                 <!-- Afficher les messages d'erreur -->
                 <?php if (isset($_SESSION["error_annonce"])): ?>
                     <p style="color:red; font-weight:bold;"><?= $_SESSION["error_annonce"] ?></p>
@@ -115,9 +115,7 @@ Paramètres :
                 </div>
 
                 <!-- date de fin -->
-
                 <div>
-
                     <label for="date_fin"> Date de fin de l'enchère :</label>
                     <input type="datetime-local" name="date_fin" id="date_fin"
                         value="<?= date("Y-m-d\TH:i",strtotime($annonce->value("date_fin"))) ?>" >
@@ -129,10 +127,17 @@ Paramètres :
                     <?php if (!empty($photos)): ?>
 
                         <?php foreach ($photos as $photo): ?>
-                            <img
-                                src="img/<?= $photo->html("fichier") ?>"
-                                alt="Photo de l'annonce"
-                                style="max-width:150px;">
+
+                            <div class="photo-actuelle">
+                                <img
+                                    src="img/<?= $photo->html("fichier") ?>"
+                                    alt="Photo de l'annonce"
+                                    style="max-width:150px;">
+
+                                <a class="btn-supprimer-photo" href="supprimer-photo.php?id=<?= $photo->id() ?>&annonce_id=<?= $annonce->id() ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette photo ?')">❌
+                                </a>
+                            </div>
+
                         <?php endforeach; ?>
 
                     <?php else: ?>

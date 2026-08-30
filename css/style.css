@@ -1,4 +1,4 @@
-/* Style global */
+/************************* RESET *********************/
 
 body {
   font-family: Arial, sans-serif;
@@ -51,7 +51,7 @@ h3 {
   background-color: #2e45f1;
 }
 
-/********************* FORMULAIRE *************************/
+/********************* FORMULAIRE ***********************/
 form {
   background-color: rgb(218, 208, 208);
   padding: 10px;
@@ -90,4 +90,33 @@ textarea {
   overflow-y: auto;
   margin-bottom: 2rem;
   margin-top: 1rem;
+}
+
+/******************* BOUTON SUPPRIMER PHOTO *****************/
+.photo-actuelle {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+.btn-supprimer-photo {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  border: solid 2px #ff0000;
+  padding: 2px;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 10px;
+  text-decoration: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-supprimer-photo:hover {
+  background-color: #ff0000;
+  border: solid 2px #141313;
 }

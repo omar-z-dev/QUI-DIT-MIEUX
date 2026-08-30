@@ -36,6 +36,8 @@ $dateFin    = $_POST["date_fin"] ?? "";
 
 // Charger l'annonce
 $annonce=new annonce();
+// Charger l'annonce existante à modifier
+$annonce->load($annonceId);
 
 // Vérifier les champs obligatoires
 if (
@@ -50,15 +52,12 @@ empty($dateFin)) {
     exit;
 }
 
-// Mettre les nouvelles valeurs dans l'objet annonce
+// Remplir l'objet annonce avec les nouvelles valeurs
 $annonce->set("titre",$titre);
 $annonce->set("categorie",$categorie);
 $annonce->set("description",$description);
 $annonce->set("etat",$etat);
 $annonce->set("prix_depart",$prixDepart);
-
-// Transformer la date HTML en format MySQL
-$dateFin=str_replace("T"," ",$dateFin);
 $annonce->set("date_fin",$dateFin);
 
 // Mettre à jour l'annonce dans la base de données

@@ -35,7 +35,10 @@ Paramètres : $categories : liste des categories de l'api
             <?php unset($_SESSION["error_annonce"]); ?>
         <?php endif; ?>
 
-        <!-- FORMULAIRE D'AJOUT D'UNE ANNONCE -->
+        <!------------ FORMULAIRE D'AJOUT D'UNE ANNONCE -------------->
+        <!------------ FORMULAIRE D'AJOUT D'UNE ANNONCE -------------->
+
+        <!-- enctype="multipart/form-data" est nécessaire pour que les photos soient correctement envoyées au serveur.--------->
 
         <form action="valider-ajout-annonce.php"method="POST"  enctype="multipart/form-data">
             <!-- Titre -->
