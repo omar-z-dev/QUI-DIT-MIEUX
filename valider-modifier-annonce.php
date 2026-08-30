@@ -46,7 +46,7 @@ empty($etat) ||
 empty($prixDepart) || 
 empty($dateFin)) {
     $_SESSION["error_annonce"]="Veuillez remplir tous les champs obligatoires.";
-    header("Location: afficher-modifier-annonce.php?id=".$annonceId);
+    header("Location: modifier-annonce.php?id=".$annonceId);
     exit;
 }
 

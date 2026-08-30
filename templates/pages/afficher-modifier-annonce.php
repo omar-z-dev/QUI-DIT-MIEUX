@@ -39,6 +39,12 @@ Paramètres :
             <!-------- FORMUlaire de modification --------->
 
             <form action="valider-modifier-annonce.php"  method="POST" enctype="multipart/form-data">
+                
+                <!-- Afficher les messages d'erreur -->
+                <?php if (isset($_SESSION["error_annonce"])): ?>
+                    <p style="color:red; font-weight:bold;"><?= $_SESSION["error_annonce"] ?></p>
+                    <?php unset($_SESSION["error_annonce"]); ?>
+                <?php endif; ?>
 
                 <!-- id -->
                 <input  type="hidden" name="annonce_id" value="<?= $annonce->id() ?>">
