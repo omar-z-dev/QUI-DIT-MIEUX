@@ -30,6 +30,12 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
     <main>
         <h1> Bienvenue sur QuiDitMieux  💵💵 </h1>
         <h2>Accueil publique</h2>
+        <!-------- message de deconexion  ------->
+        <?php if (!empty($messageTimeout)): ?>
+            <p style="color:red; font-weight:bold;">
+                <?= $messageTimeout ?>
+            </p>
+        <?php endif; ?>
         <p>
             Nous sommes QuiDitMieux, une plateforme d’enchères entre particulier permettant aux utilisateurs de vendre et acheter des objets.<br><br>
 

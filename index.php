@@ -24,6 +24,14 @@ $categories = $api->getCategoryByCurl();
 var_dump($categories);
 echo "</pre>";*/
 
+//message de deconnexion
+$messageTimeout = "";
+
+if (isset($_GET["timeout"])) {
+
+    $messageTimeout = "Vous avez été déconnecté après une période d'inactivité ⏱️";
+}
+
 // Afficher le template  
 require "templates/pages/afficher-accueil-principal.php";
 

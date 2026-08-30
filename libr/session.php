@@ -23,7 +23,7 @@ function sessionInit() {
     //Expiration automatique de session
 
 //durée max sans activité en seconde
-$timeout = 2000;
+$timeout = 20;
 
 // vérifier si activité précédente existe
 if (isset($_SESSION["last"])) {
@@ -36,7 +36,7 @@ if (isset($_SESSION["last"])) {
             // vider le tableau $_SESSION en mémoire avec  session_unset()
             deconnect();
 
-            header("Location: accueil.php?timeout=1");
+            header("Location: index.php?timeout=1");
             exit;
         }
 }
