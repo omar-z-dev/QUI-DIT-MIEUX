@@ -1,5 +1,6 @@
 <?php
 /*
+TEMPLATE:
 Rôle : afficher le formulaire de modification d'une annonce
 
 Paramètres :
@@ -56,6 +57,7 @@ Paramètres :
                         <option value="">-- Choisir une catégorie --</option>
 
                         <?php foreach ($categories as $code => $libelle): ?>
+                            <!-- Afficher le libéllé de la categorie selectionnée -->
                             <option
                                 value="<?= htmlspecialchars($code) ?>"
 
@@ -79,7 +81,6 @@ Paramètres :
                 <!-- etat -->
                 <div>
                     <label for="etat">État de l'objet :</label>
-
                     <select name="etat" id="etat">
 
                         <option value="">-- Choisir un état --</option>
@@ -87,18 +88,14 @@ Paramètres :
                             value="Neuf" <?= $annonce->value("etat") === "Neuf" ? "selected" : "" ?>>Neuf
                         </option>
 
-                        <option
-                            value="Très bon état"
-                            <?= $annonce->value("etat") === "Très bon état" ? "selected" : "" ?>>Très bon état
-                        </option>
+                        <option value="Très bon état"
+                            <?= $annonce->value("etat") === "Très bon état" ? "selected" : "" ?>>Très bon état </option>
 
-                        <option
-                            value="Bon état"
+                        <option value="Bon état"
                             <?= $annonce->value("etat") === "Bon état" ? "selected" : "" ?> >Bon état
                         </option>
 
-                        <option
-                            value="État correct"
+                        <option value="État correct"
                             <?= $annonce->value("etat") === "État correct" ? "selected" : "" ?>>État correct
                         </option>
 
@@ -108,9 +105,7 @@ Paramètres :
                 <!-- prixx -->
                 <div>
                     <label for="prix_depart"> Prix de départ :</label>
-                    <input
-                        type="number" name="prix_depart" id="prix_depart"
-                        min="0" value="<?= $annonce->html("prix_depart") ?>" > €
+                    <input type="number" name="prix_depart" id="prix_depart" min="0" value="<?= $annonce->html("prix_depart") ?>" > €
                 </div>
 
                 <!-- date de fin -->
@@ -118,14 +113,11 @@ Paramètres :
                 <div>
 
                     <label for="date_fin"> Date de fin de l'enchère :</label>
-                    <input
-                        type="datetime-local" name="date_fin" id="date_fin"
-                        value="<?= date("Y-m-d\TH:i",
-                            strtotime($annonce->value("date_fin"))) ?>" >
+                    <input type="datetime-local" name="date_fin" id="date_fin"
+                        value="<?= date("Y-m-d\TH:i",strtotime($annonce->value("date_fin"))) ?>" >
                 </div>
 
-                <!--photos  -->
-
+                <!-- Recuperer les photos actuelles -->
                 <div>
                     <p>Photo(s) actuelle(s) :</p>
                     <?php if (!empty($photos)): ?>
@@ -148,10 +140,10 @@ Paramètres :
                     <input type="file" name="photos[]"
                         id="photos" multiple accept="image/jpeg,image/png,image/webp">
                 </div>
+
                 <!-- valider -->
                 <div>
-                    <button type="submit">Valider les modifications ✔️
-                    </button>
+                    <button type="submit">Valider les modifications ✔️</button>
                 </div>
             </form>
             <a href="dashboard.php">↩️ Retour</a>

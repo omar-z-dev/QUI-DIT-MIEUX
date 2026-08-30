@@ -1,6 +1,6 @@
 <?php
 /*
-
+TEMPLATE :
 Rôle : afficher la page dashboard de l'utilisateur connecté elle contient : 
 - mes annonces : les annonces de l'utilisateur
 - les autres annonces : les annonces des autres utilisateurs

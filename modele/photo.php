@@ -52,4 +52,32 @@ class photo extends _model {
         $objet->loadFromtab($ligne);
         return $objet;
     }
+    /*=====================================================
+      2.     getPhotosByAnnonce
+    =======================================================*/
+    function getPhotosByAnnonce($annonceId){
+        // Rôle : récupérer toutes les photos d'une annonce
+        // Paramètre : id de l'annonce
+        // Retour : tableau d'objets photo
+
+        $sql = "SELECT *
+                FROM `$this->table`
+                WHERE annonce_id = :annonce_id";
+
+        $req = $this->execute($sql, [
+            ":annonce_id" => $annonceId
+        ]);
+
+        // Récupérer toutes les lignes
+        $lignes = $req->fetchAll(PDO::FETCH_ASSOC);
+        $objets  = [];
+        $className = get_class($this);
+
+        foreach ($lignes as $ligne) {
+            $objet = new $className();
+            $objet->loadFromtab($ligne);
+            $objets[] = $objet;
+        }
+        return $objets;
+    }
 }

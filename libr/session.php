@@ -23,7 +23,7 @@ function sessionInit() {
     //Expiration automatique de session
 
 //durée max sans activité en seconde
-$timeout = 20;
+$timeout = 200;
 
 // vérifier si activité précédente existe
 if (isset($_SESSION["last"])) {

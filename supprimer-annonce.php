@@ -1,6 +1,8 @@
 <?php
 
 /*
+
+CONTROLEUR :
 Rôle : supprimer une annonce
 
 Paramètre :

@@ -2,6 +2,7 @@
 
 /*
 
+CONTROLEUR :
 Rôle : Insérer un enregistrement dans la table suivi avec l'id de l'utilisateur et l'id de l'annonce losque on clique sur suivre l'annonce
 param : annonce_id
 

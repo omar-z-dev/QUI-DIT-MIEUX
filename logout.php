@@ -1,6 +1,7 @@
 <?php
 /*
 
+CONTROLEUR :
 Rôle : fermer la session et rediriger vers la page d'accueil
 paramètres : aucun
 

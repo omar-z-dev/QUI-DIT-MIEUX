@@ -1,6 +1,7 @@
 <?php
 /*
 
+TEMPLATE:
 Rôle : afficher la page d'inscription
 
 Paramètres : aucun

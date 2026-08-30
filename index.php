@@ -1,6 +1,7 @@
 <?php
 /*
 
+CONTROLEUR :
 Rôle : afficher la page accueil principale de l'application (sans être connecté) )
 paramètre : aucun
 

@@ -3,17 +3,15 @@
 
 require_once __DIR__ . "/../core/model.php";
 
-
 class api extends _model{
 
     private string $urlCatalogue = "https://api.mywebecom.ovh/play/qdm/categ.php";
 
 
     function getCategoryByCurl(){
-        //role : recuprer le catalogue de farine via l'api
+        //role : recuprer le catalogue des categories via l'api
         //parametres : neant
-        //retour : retourne le catalogue de farine
-        
+        //retour : retourne le catalogue des categories
         // Initialisation cURL
         $curl = curl_init($this->urlCatalogue);
 

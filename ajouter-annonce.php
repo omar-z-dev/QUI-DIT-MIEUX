@@ -1,5 +1,7 @@
 <?php
 /*
+
+CONTROLEUR :
 Rôle : afficher la page (formulaire) d'ajout d'annonce
 paramètre : l'objet $categories : liste des categories de l'api
 

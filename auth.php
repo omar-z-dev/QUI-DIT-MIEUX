@@ -2,6 +2,7 @@
 
 /*
 
+CONTROLEUR :
 Rôle : gérer l'authentification et l'inscription des utilisateurs
 
 Paramètres : action (login ou register) et les données du formulaire (identifiant, mot de passe, pseudo, email)

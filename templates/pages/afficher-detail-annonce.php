@@ -1,6 +1,6 @@
 <?php
 /*
-
+TEMPLATE :
 Rôle : afficher le détail d'une annonce et mise en forme
 
 Paramètres : id de l'annonce

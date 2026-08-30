@@ -1,6 +1,7 @@
 <?php
 /*
 
+CONTROLEUR :
 Rôle : afficher la page dashboard de l'utilisateur connecté
 param : néant
 

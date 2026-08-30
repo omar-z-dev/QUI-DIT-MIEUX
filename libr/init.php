@@ -1,4 +1,10 @@
 <?php
+/*
+
+Role : initialiser l'application (BDD, session, autoload des modèles)
+parametres : aucun
+
+*/
 
 // Lignes de code pour l'initialisation des contrôleurs
 //heure paris 

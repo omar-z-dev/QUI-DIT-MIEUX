@@ -1,6 +1,6 @@
 <?php
 /*
-
+TEMPLATE:
 Rôle : afficher la page (formulaire) d'ajout d'annonce
 
 Paramètres : $categories : liste des categories de l'api

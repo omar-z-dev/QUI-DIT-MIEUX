@@ -1,6 +1,7 @@
 <?php
 /*
 
+CONTROLEUR :
 Rôle : Afficher le formulaire prerempli de modification d'une annonce 
 paramètres :  id de l'annonce
 
@@ -31,6 +32,15 @@ if ($meilleureEnchere) {
 // Catégories pour la codelist déroulante
 $api = new api();
 $categories = $api->getCategoryByCurl();
+
+
+// Charger les photos de l'annonce à modifier
+$photo = new photo();
+$photos = $photo->getPhotosByAnnonce($annonceId); 
+
+/*echo "<pre>";
+var_dump($photos);
+echo "</pre>";*/
 
 
 // afficher la page de modification d'une annonce
