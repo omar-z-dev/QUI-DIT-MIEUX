@@ -66,6 +66,11 @@ $annonce->update();
 
 // AJOUT DES NOUVELLES PHOTOS
 
+// Vérifier si l'annonce possède déjà une photo principale
+$photo = new photo();
+
+$photoPrincipale=$photo->getPhotoPrincipale($annonceId);
+
 // Vérifier si l'utilisateur a sélectionné des photos
 if (isset($_FILES["photos"]) && !empty($_FILES["photos"]["name"][0])) {
 
@@ -105,13 +110,19 @@ if (isset($_FILES["photos"]) && !empty($_FILES["photos"]["name"][0])) {
 
             // Associer la photo à l'annonce
             $photo->set("annonce_id",$annonceId);
-
             // Enregistrer le nom du fichier
             $photo->set("fichier",$nomFichier);
 
-            // Les nouvelles photos ne sont pas principales
-            $photo->set("principale",0);
+            // S'il n'y a aucune photo principale,
+            // la première nouvelle photo devient principale
+            if(!$photoPrincipale){
+                $photo->set("principale",1);
 
+                // il existe une photo principale
+                $photoPrincipale=true;
+            }else{
+                $photo->set("principale",0);
+            }
             // Enregistrer la photo dans la base de données
             $photo->insert();
         }
