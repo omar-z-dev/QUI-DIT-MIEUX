@@ -1,7 +1,8 @@
 <?php
 /*
 
-Rôle : Enregistrer une annonce et photos dans la BDD de l'utilisateur connecté 
+CONTROLEUR :
+Rôle : Enregistrer une annonce et photo(s) dans dans la BDD de l'utilisateur connecté 
 
 Paramètre : les données du formulaire (titre, categorie, description, etat, prix_depart, date_fin et photo)
 
@@ -101,7 +102,7 @@ if (isset($_FILES["photos"])) {
                 pathinfo($nomOriginal, PATHINFO_EXTENSION)
             );
 
-            // Extensions autorisées
+            // Extensions autorisées sinon ignorer
             $extensionsAutorisees = ["jpg", "jpeg", "png", "webp"];
 
             if (!in_array($extension, $extensionsAutorisees)) {
@@ -123,7 +124,7 @@ if (isset($_FILES["photos"])) {
                 $photo->set("annonce_id", $annonceId);
                 $photo->set("fichier", $nomFichier);
 
-                // Première photo = principale
+                // Première photo = principale a afficher sur la page
                 if ($index === 0) {
                     $photo->set("principale", 1);
                 } else {

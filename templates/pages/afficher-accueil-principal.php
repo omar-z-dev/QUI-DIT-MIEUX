@@ -1,5 +1,6 @@
 <?php
 /*
+
 TEMPLATE:
 Rôle : afficher la page accueil principale de l'application (sans être connecté)
 

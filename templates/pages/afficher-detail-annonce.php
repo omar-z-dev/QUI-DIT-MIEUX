@@ -10,6 +10,7 @@ Paramètres : id de l'annonce
 /** @var photo $photoPrincipale */
 /** @var string $libelleCategorie */
 /** @var object $meilleureEnchere */
+/** @var object $estSuivie */
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,6 @@
 <?php
 /*
+
 TEMPLATE:
 Rôle : afficher la page (formulaire) d'ajout d'annonce
 
@@ -79,8 +80,7 @@ Paramètres : $categories : liste des categories de l'api
             <!-- Prix de départ -->
             <div>
                 <label for="prix_depart">Prix de départ :</label>
-                <input type="number" name="prix_depart" id="prix_depart" min="0"
-                >€
+                <input type="number" name="prix_depart" id="prix_depart" min="0">€
             </div>
             <!-- Date de fin -->
             <div>
@@ -90,12 +90,11 @@ Paramètres : $categories : liste des categories de l'api
             <!-- Photo : multiples -->
             <div>
                 <label for="photo">Photo(s) :</label>
-                <input type="file"
-                        name="photos[]"
-                        id="photos"
-                        multiple
+                <input type="file" name="photos[]"
+                        id="photos" multiple
                         accept="image/jpeg,image/png,image/webp">
             </div>
+            
             <!-- Validation button -->
             <div>
                 <button type="submit">Valider ✔️</button>

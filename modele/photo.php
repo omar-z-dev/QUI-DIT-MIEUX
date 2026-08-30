@@ -18,12 +18,12 @@ class photo extends _model {
     ];
 
     /*=====================================================
-      1.     getPhotoPrincipale
+      1.             getPhotoPrincipale
     =======================================================*/
     function getPhotoPrincipale($annonceId){
-        // Rôle : récupérer la photo principale d'une annonce
+        // Rôle      : récupérer la photo principale d'une annonce
         // Paramètre : id de l'annonce
-        // Retour : objet photo ou false
+        // Retour    : objet photo ou false
 
         $sql = "SELECT *
                 FROM `$this->table`
@@ -53,12 +53,12 @@ class photo extends _model {
         return $objet;
     }
     /*=====================================================
-      2.     getPhotosByAnnonce
+      2.            getPhotosByAnnonce
     =======================================================*/
     function getPhotosByAnnonce($annonceId){
-        // Rôle : récupérer toutes les photos d'une annonce
+        // Rôle      : récupérer toutes les photos d'une annonce
         // Paramètre : id de l'annonce
-        // Retour : tableau d'objets photo
+        // Retour    : tableau d'objets photo
 
         $sql = "SELECT *
                 FROM `$this->table`

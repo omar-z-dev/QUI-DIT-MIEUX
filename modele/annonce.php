@@ -26,9 +26,9 @@ class annonce extends _model {
       1.                 listAll by user
     =======================================================*/
     function listAllByUser($utilisateur_id) {
-        // Rôle : lister tous les enregistrements de la table
+        // Rôle       : lister tous les enregistrements de la table
         // Paramètres : néant
-        // Retour : tableau d'objets 
+        // Retour     : tableau d'objets 
         $sql = "SELECT " . $this->listFieldsForSql() . " FROM `$this->table` 
         WHERE utilisateur_id = :utilisateur_id";
 
@@ -117,10 +117,10 @@ class annonce extends _model {
       2.                 listAll by categorie
     =======================================================*/
     function listOtherAnnonces($utilisateurId){
-        // Rôle : récupérer toutes les annonces sauf celles
+        // Rôle      : récupérer toutes les annonces sauf celles
         // de l'utilisateur connecté
         // Paramètre : id utilisateur
-        // Retour : tableau d'objets annonce
+        // Retour    : tableau d'objets annonce
 
         $sql = "SELECT " . $this->listFieldsForSql() . "
                 FROM `$this->table`

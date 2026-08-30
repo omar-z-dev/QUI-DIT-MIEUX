@@ -7,7 +7,6 @@ paramètre : aucun
 
 */
 
-
 // Initialisation
 require_once "libr/init.php";
 

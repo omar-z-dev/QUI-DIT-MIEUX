@@ -1,5 +1,6 @@
 <?php
 /*
+
 TEMPLATE:
 Rôle : afficher le formulaire de modification d'une annonce
 
@@ -7,7 +8,9 @@ Paramètres :
 - $annonce : annonce à modifier
 - $categories : catégories provenant de l'API
 - $photos : photos actuelles de l'annonce
+
 */
+/** @var object $categories */
 ?>
 
 <!DOCTYPE html>

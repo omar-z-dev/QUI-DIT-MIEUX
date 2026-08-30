@@ -1,6 +1,7 @@
 <?php
 
 /*
+CONTROLEUR :
 Rôle : extraire  et afficher une annonce avec sa photo principale
 Paramètre : id de l'annonce
 */
@@ -37,7 +38,6 @@ $libelleCategorie = $categories->{$codeCategorie};
 
 // Charger la photo principale
 $photo = new photo();
-
 $photoPrincipale = $photo->getPhotoPrincipale($id);
 
 

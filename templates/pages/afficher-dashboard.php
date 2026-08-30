@@ -1,5 +1,6 @@
 <?php
 /*
+
 TEMPLATE :
 Rôle : afficher la page dashboard de l'utilisateur connecté elle contient : 
 - mes annonces : les annonces de l'utilisateur
@@ -10,7 +11,10 @@ Rôle : afficher la page dashboard de l'utilisateur connecté elle contient :
 Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
              $ListeAnnonces : annonces des autres utilisateurs
 
+
 */
+/** @var object $categories */
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">

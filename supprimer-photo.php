@@ -18,7 +18,6 @@ require_once "libr/init.php";
 $photoId   = $_GET["id"] ?? 0;
 $annonceId = $_GET["annonce_id"] ?? 0;
 
-
 // Charger la photo
 $photo = new photo();
 
@@ -49,9 +48,6 @@ if (file_exists($chemin)) {
     unlink($chemin);
 }
 
-// Message succès
-$_SESSION["annonce"]="Photo supprimée avec succès ✅";
-
-// Retour vers le formulaire de modification
+// Rester sur le formulaire de modification
 header("Location: modifier-annonce.php?id=".$annonceId);
 exit;
