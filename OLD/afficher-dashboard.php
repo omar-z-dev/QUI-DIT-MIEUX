@@ -48,8 +48,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                 </p>
             </section>
 
-            <!------------------ Mes annonces ---------------->
-            <!------------------ Mes annonces ---------------->
+            <!-- Mes annonces -->
             <section>
 
                 <h2>Mes annonces ✅</h2>
@@ -72,9 +71,69 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                 <!------------Tables de mes annonces ---------->
                 <!------------Tables de mes annonces ---------->    
             
-                <div id="bloc-mes-annonces">
-                </div>
-            
+
+                
+                <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Dernier prix proposé</th>
+                            <th>Date de fin</th>
+                            <th>Statut</th>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
+                            <th>Voir</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php if (empty($mesAnnonces)): ?>
+                            <!-- Première ligne : aucune annonce -->
+                            <tr>
+                                <td colspan="5" style="text-align: center;">
+                                    Vous n'avez aucune annonce.
+                                </td>
+                            </tr>
+                        <?php else: ?>
+
+                            <?php foreach ($mesAnnonces as $annonce): ?>
+                                <tr>
+                                    <td><?= $annonce->html("titre") ?>
+                                    </td>
+                                    <td><?=htmlspecialchars($derniersPrix[$annonce->id()]) ?> €
+                                    </td>
+                                    <td><?= $annonce->html("date_fin") ?>
+                                    </td>
+                                    <td>
+                                        <?= htmlspecialchars($statuts[$annonce->id()]) ?>
+                                    </td>
+                                    <td>
+                                        <a href="modifier-annonce.php?&id=<?= $annonce->id() ?>">
+                                        Modifier 📝</a>
+                                    </td>
+                                    <td>
+                                        <a href="supprimer-annonce.php?&id=<?= $annonce->id() ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');">
+                                        Supprimer ❌</a>
+                                    </td>
+                                    <td>
+                                        <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                                        Voir detail 🧐</a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        <!-- Deuxième ligne : toujours affichée -->
+                        <tr>
+                            <td colspan="5" style="text-align: center;">
+                                <a href="ajouter-annonce.php">
+                                Créer une annonce ➕</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
             </section>
 
             <!----------- Liste desAutres annonces ---------->
@@ -130,6 +189,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                     <?php endif; ?>
                 </div>
             </section>
+            <section>
 
             <h2>Rechercher une annonce 🔍</h2> 
 
@@ -137,11 +197,14 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
             <!--------------- Formulaire de recherche ------------->
 
             <?php require "templates/forms/formulaire-recherche.php"; ?>
-    
+            
+            </section>
+
+
             <!------------------- Mes enchères ------------------->
             <!------------------- Mes enchères ------------------->
 
-        <section>
+            <section>
             <h2>Mes enchères 🤑🤑</h2>
 
             <?php if(empty($mesEncheres)): ?>
@@ -203,8 +266,6 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                 <?php endif; ?>
             </section>
         </main>
-
-        <!-- js scripts-->
         <script src="js/fonctions.js"></script>
 
     </body>

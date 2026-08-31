@@ -57,7 +57,7 @@ Paramètres : id de l'annonce
                     alt="Photo de l'annonce"
                     style="max-width: 400px;">
             <?php else: ?>
-                <p>Aucune image disponible pour cette annonce.</p>
+                <p style="font-size: 13px;font-style: italic;">Aucune image disponible pour cette annonce.</p>
             <?php endif; ?>
 
             <!-- infos de l'annonce -->
