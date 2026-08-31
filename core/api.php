@@ -33,4 +33,23 @@ class api extends _model{
         // Transformer JSON en objet PHP
         return json_decode($resultat);
     }
+
+    /*=================================================
+       1-            rechercherCategories
+    ==================================================*/
+    public function rechercherCategories($recherche){
+        //role : recuprer les categories via l'api
+        //parametres : $recherche
+        //retour : retourne le catalogue des categories
+    $url = $this->urlCatalogue . "?search=" . urlencode($recherche);
+
+    $curl = curl_init($url);
+
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    $response = curl_exec($curl);
+    
+    //Tableau associatif 
+    return json_decode($response, true);
+}
 }

@@ -35,7 +35,7 @@ if (!is_numeric($montant) || $montant <= 0) {
     exit;
 }
 
-// Charger l'annonce
+// Instancier un objet annonce
 $annonce = new annonce();
 
 // Charger l'annonce
@@ -61,9 +61,7 @@ if (strtotime($annonce->value("date_fin")) <= time()) {
 
 // Chercher la meilleure enchère existante
 $enchere = new enchere();
-
 $meilleureEnchere = $enchere->getMeilleureEnchere($annonceId);
-
 
 // Si aucune enchère n'existe encore, vérifier que l'enchère est supérieure au prix de départ, sinon afficher un message d'erreur
 if (!$meilleureEnchere) {
@@ -108,7 +106,6 @@ if ($resultat) {
 
     $_SESSION["enchere"] =
         "✅ Votre enchère a bien été enregistrée";
-
     header("Location: voir-detail-annonce.php?id=" . $annonceId);
     exit;
 }
@@ -116,6 +113,5 @@ if ($resultat) {
 // Si erreur
 $_SESSION["enchere"] =
     "Erreur lors de l'enregistrement de l'enchère ❌";
-
 header("Location: detail-annonce.php?id=" . $annonceId);
 exit;

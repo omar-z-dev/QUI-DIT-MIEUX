@@ -52,69 +52,93 @@ class annonce extends _model {
     }
 
     /*=====================================================
-      2.                 listAll by categorie
+      2.                 rechercher catégories
     =======================================================*/
-    /*function rechercherAnnonces($texte, $categorie, $etat, $prix, $vente){
-        $sql = "SELECT " . $this->listFieldsForSql() . "
-                FROM `$this->table`
-                WHERE 1=1";
+    public function rechercherCategoriesByCriteres($texte,$categories,$etat,$prix,$vente){
+        
+        // Rôle : rechercher des annonces selon plusieurs critères
+        // Paramètres : $texte, $codesCategories, $etat, $prix, $vente
+        // Retour : tableau d'objets annonce
 
-        $params = [];
+        $sql="SELECT * FROM `$this->table` WHERE 1 = 1";
 
-        // Texte dans titre OU description
-        if ($texte !== "") {
+        $params=[];
 
-            $sql .= " AND (
-                        titre LIKE :texte
-                        OR description LIKE :texte
-                    )";
+        // Recherche dans le titre ou la description
+        if(!empty($texte)){
 
-            $params[":texte"] = "%" . $texte . "%";
+            $sql.=" AND (
+                titre LIKE :texte
+                OR description LIKE :texte
+            )";
+            $params[":texte"] = "%".$texte."%";
         }
+        // Catégories trouvées par l'API
+        if(!empty($categories)){
 
-        // Catégorie
-        if ($categorie !== "") {
+            $placeholders = [];
 
-            $sql .= " AND categorie = :categorie";
-            $params[":categorie"] = $categorie;
+            foreach($categories as $index => $code){
+
+                $placeholder = ":categorie".$index;
+
+                // Ajouter le placeholder au tableau
+                $placeholders[] = $placeholder;
+                /* construire 
+                [
+                    ":categorie0",
+                    ":categorie1",
+                    ":categorie2"
+                ]
+                */
+
+                //Créer un tableau associatif avec le placeholder comme clé et le code comme valeur
+                $params[$placeholder] = $code;
+
+                /* construire 
+                $params=[
+                            ":categorie0"=>15,
+                            ":categorie1"=>14
+                        ];*/
+            }
+
+            $sql.=" AND categorie IN (".implode(",",$placeholders).")";
         }
-
         // État
-        if ($etat !== "") {
-            $sql .= " AND etat = :etat";
+        if(!empty($etat)){
+
+            $sql.=" AND etat = :etat";
             $params[":etat"] = $etat;
         }
-
         // Prix maximum
-        if ($prix !== "") {
-            $sql .= " AND prix_depart <= :prix";
+        if($prix!==""){
+
+            $sql.=" AND prix_depart <= :prix";
             $params[":prix"] = $prix;
         }
-
         // Vente en cours
-        if ($vente === "en_cours") {
-            $sql .= " AND date_fin > NOW()";
+        if($vente === "en_cours"){
+            $sql.=" AND date_fin > NOW()";
         }
-
         // Vente terminée
-        if ($vente === "terminee") {
-            $sql .= " AND date_fin <= NOW()";
+        if($vente === "terminee"){
+            $sql.=" AND date_fin <= NOW()";
         }
+        $req = $this->execute($sql,$params);
 
-        $req = $this->execute($sql, $params);
-        $lignes = $req->fetchAll(PDO::FETCH_ASSOC);
-        $objets = [];
+        // Transformer les lignes SQL en objets annonce
+        $resultats=[];
 
-        foreach ($lignes as $ligne) {
-            $objet = new annonce();
-            $objet->loadFromtab($ligne);
-            $objets[] = $objet;
+        foreach($req->fetchAll(PDO::FETCH_ASSOC) as $ligne){
+            $annonce = new annonce();
+            $annonce->loadFromTab($ligne);
+            $resultats[] = $annonce;
         }
-        return $objets;
-    }*/
+        return $resultats;
+    }
 
-        /*=====================================================
-      2.                 listAll by categorie
+    /*=====================================================
+      3.                 listAll by categorie
     =======================================================*/
     function listOtherAnnonces($utilisateurId){
         // Rôle      : récupérer toutes les annonces sauf celles

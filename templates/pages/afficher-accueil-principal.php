@@ -55,6 +55,7 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
                 <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
                     <thead>
                         <tr>
+                            <th>Propriétaire</th>
                             <th>Titre</th>
                             <th>Catégorie</th>
                             <th>Prix de départ</th>
@@ -67,6 +68,10 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
                     <tbody>
                         <?php foreach ($ListeAnnonces as $annonce): ?>
                             <tr>
+                                <td>
+                                    <!--si le champ est un lien alors il retourne l'objet lié -->
+                                    <?= $annonce->get("utilisateur_id")->html("pseudo") ?>
+                                </td>
                                 <td><?= $annonce->html("titre") ?>
                                 </td>
                                 <td> <?= htmlspecialchars(
@@ -103,16 +108,11 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
 
                 <!--Codelist des catégories qui proviennent de l'API -->
                 <div>
-                    <label for="categorie">Catégorie :</label>
-                    <select name="categorie" id="categorie">
-                        <option value="">Toutes les catégories</option>
-                        <?php foreach ($categories as $code => $libelle): ?>
-                            <option value="<?= htmlspecialchars($code) ?>">
-                                <?= htmlspecialchars($libelle) ?>
-                            </option>
+                    <label for="recherche_categorie">Catégorie :</label>
 
-                        <?php endforeach; ?>
-                    </select>
+                    <input
+                        type="text" name="recherche_categorie"
+                        id="recherche_categorie" placeholder="Exemple : jeu vidéo">
                 </div>
 
                 <div>
@@ -121,10 +121,10 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
                     <select name="etat" id="etat">
                         <option value="">-- Choisir un état --</option>
                         <option value="">Tous</option>
-                        <option value="1">Neuf</option>
-                        <option value="2">Très bon état</option>
-                        <option value="3">Bon état</option>
-                        <option value="4">état correct</option>
+                        <option value="Neuf">Neuf</option>
+                        <option value="Très bon état">Très bon état</option>
+                        <option value="Bon état">Bon état</option>
+                        <option value="état correct">état correct</option>
                     </select>
                 </div>
 

@@ -137,8 +137,9 @@ Paramètres :
                                     alt="Photo de l'annonce"
                                     style="max-width:150px;">
 
-                                <a class="btn-supprimer-photo" href="supprimer-photo.php?id=<?= $photo->id() ?>&annonce_id=<?= $annonce->id() ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette photo ?')">❌
+                                <a class="btn-supprimer-photo" href="supprimer-photo.php?id=<?= $photo->id() ?>&annonce_id=<?= $annonce->id() ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette photo ?')">✕
                                 </a>
+                                
                             </div>
 
                         <?php endforeach; ?>
