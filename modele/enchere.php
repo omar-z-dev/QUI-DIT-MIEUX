@@ -47,4 +47,32 @@ class enchere extends _model {
         $objet->loadFromtab($ligne);
         return $objet;
     }
+    /*=====================================================
+      2.  getEncheresByAnnonce
+    =======================================================*/
+    public function getEncheresByUtilisateur($utilisateurId){
+
+    // Rôle : recuperer les encheres d'un utilisateur
+    // Parametre : $utilisateurId
+    // Retour : tableau d'objets enchere
+    $sql="SELECT *
+          FROM `$this->table`
+          WHERE utilisateur_id = :utilisateur_id
+          ORDER BY montant DESC";
+
+    $req=$this->execute($sql,[
+        ":utilisateur_id"=>$utilisateurId
+    ]);
+    $resultats = $req->fetchAll(PDO::FETCH_ASSOC);
+    $encheres = [];
+    $className = get_class($this);
+
+    foreach($resultats as $ligne){
+        $objet = new $className();
+        $objet->loadFromtab($ligne);
+        $encheres[]=$objet;
+    }
+
+    return $encheres;
+}
 }

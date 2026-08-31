@@ -31,5 +31,16 @@ $api = new api();
 //Récupérer ttes les categories
 $categories = $api->getCategoryByCurl();
 
+// Récupérer les enchères de l'utilisateur connecté
+$enchere = new enchere();
+
+$mesEncheres = $enchere->getEncheresByUtilisateur($_SESSION["id"]
+);
+
+// Récupérer les annonces suivi  de l'utilisateur connecté
+$suivi = new suivi();
+$mesSuivis = $suivi->getSuivisByUtilisateur($_SESSION["id"]
+);
+
 // Afficher le template  
 require "templates/pages/afficher-dashboard.php";

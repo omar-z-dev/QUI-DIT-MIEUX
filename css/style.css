@@ -124,14 +124,16 @@ textarea {
 /***********************  CARDS ANNONCES  *****************/
 
 .allcards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
   flex-wrap: wrap;
   justify-content: space-between;
   border: solid 1px black;
   padding: 1rem;
   border-radius: 5px;
   margin-bottom: 1rem;
-  background-color: #c2bbbb;
+  background-color: #e5dddd;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .cards-annonces img {

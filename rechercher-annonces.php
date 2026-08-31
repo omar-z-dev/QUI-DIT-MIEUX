@@ -51,8 +51,8 @@ $categories = $api->getCategoryByCurl();
 $ListeAnnonces = $annonce->rechercherCategoriesByCriteres($texte,$categorie,$etat,$prix,$vente);
   
 // Créer les objets
-$photo   =new photo();
-$enchere =new enchere();
+$photo   = new photo();
+$enchere = new enchere();
 
 // Tableaux contenant les informations de chaque annonce
 $photosPrincipales=[];

@@ -58,7 +58,7 @@ Paramètres :
                         <h2><?= $annonce->html("titre") ?></h2>
 
                         <!-- prix courant -->
-                        <p class="prix">💰 Prix :  <strong><?= htmlspecialchars($prixCourants[$annonce->id()]) ?> €</strong></p>
+                        <p class="prix">💰 Prix actuel :  <strong><?= htmlspecialchars($prixCourants[$annonce->id()]) ?> €</strong></p>
 
 
                         <!-- date de fin -->

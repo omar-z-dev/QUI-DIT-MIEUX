@@ -66,7 +66,8 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                     <?php unset($_SESSION["annonce"]); ?>
                 <?php endif; ?>
 
-                <!--Tables des annonces -->    
+                <!------------Tables de mes annonces ---------->
+                <!------------Tables de mes annonces ---------->    
             
                 <table border="1" cellpadding="10" cellspacing="5" style="border-collapse: collapse;">
                     <thead>
@@ -100,19 +101,15 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                     </td>
                                     <td>
                                         <a href="modifier-annonce.php?&id=<?= $annonce->id() ?>">
-                                            Modifier 📝
-                                        </a>
+                                        Modifier 📝</a>
                                     </td>
                                     <td>
                                         <a href="supprimer-annonce.php?&id=<?= $annonce->id() ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');">
-                                            Supprimer ❌
-
-                                        </a>
+                                        Supprimer ❌</a>
                                     </td>
                                     <td>
                                         <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
-                                            Voir detail 🧐
-                                        </a>
+                                        Voir detail 🧐</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -121,15 +118,16 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                         <tr>
                             <td colspan="5" style="text-align: center;">
                                 <a href="ajouter-annonce.php">
-                                    Créer une annonce ➕
-                                </a>
+                                Créer une annonce ➕</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </section>
 
-            <!-- Autres annonces -->
+            <!----------- Liste desAutres annonces ---------->
+            <!----------- Liste desAutres annonces ---------->
+
             <section>
                 <h2>Liste des autres annonces 📋</h2>
                 <p>Vous pouvez consulter le détail d'une annonce, puis enchérir ou la suivre.</p>
@@ -171,8 +169,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                     </td>
                                     <td>
                                         <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
-                                            Voir detail 🧐
-                                        </a>
+                                        Voir detail 🧐</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -182,22 +179,80 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                 </div>
             </section>
             <section>
-                <h2>Rechercher une annonce 🔍</h2>
+
+            <h2>Rechercher une annonce 🔍</h2> 
+
+            <!--------------- Formulaire de recherche ------------->
+            <!--------------- Formulaire de recherche ------------->
+
+            <?php require "templates/forms/formulaire-recherche.php"; ?>
             
             </section>
 
 
-            <!-- Mes enchères -->
-            <section>
-                <h2>Mes enchères 🤑🤑</h2>
-                <!-- Les enchères  -->
-            </section>
+            <!------------------- Mes enchères ------------------->
+            <!------------------- Mes enchères ------------------->
 
-            <!-- Annonces suivies -->
             <section>
-                <h2>Annonces suivies 👣</h2>
+            <h2>Mes enchères 🤑🤑</h2>
 
-                <!-- Les annonces suivies  -->
+            <?php if(empty($mesEncheres)): ?>
+                <p>Vous n'avez effectué aucune enchère.</p>
+            <?php else: ?>
+                <table border="1" cellpadding="10" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Titre</th>
+                            <th>Montant</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($mesEncheres as $enchere): ?>
+                            <?php $annonce = $enchere->get("annonce_id"); ?>
+                            <tr>
+                                <td><?= $annonce->html("titre") ?></td>
+                                <td><?= $enchere->html("montant") ?> €</td>
+                                <td><?= $enchere->html("date_enchere") ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php endif; ?>
+        </section>
+
+            <!----------------- Annonces suivies -------------------->
+            <!----------------- Annonces suivies -------------------->
+
+            <section>
+                <h2>Mes annonces suivies 👣</h2>
+
+                <?php if(empty($mesSuivis)): ?>
+                    <p>Vous ne suivez aucune annonce.</p>
+                <?php else: ?>
+                    <table border="1" cellpadding="10" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Titre de l'annonce</th>
+                                <th>Détail</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($mesSuivis as $suivi): ?>
+                                <!-- On recupere l'objet annonce -->
+                                <?php $annonce = $suivi->get("annonce_id"); ?>
+                                <tr>
+                                    <td><?= $annonce->html("titre") ?></td>
+                                    <td>
+                                        <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                                            Voir l'annonce 🧐
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
             </section>
         </main>
         <script src="js/fonctions.js"></script>

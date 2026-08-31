@@ -15,11 +15,11 @@ class suivi extends _model {
 
     protected $links = [
         "utilisateur_id" => "utilisateur",
-        "annonce_id" => "annonce"
+        "annonce_id"     => "annonce"
     ];
 
     /*=====================================================
-      1.     estSuivie
+      1.                 estSuivie
     =======================================================*/
     function estSuivie($utilisateurId, $annonceId){
         // Rôle : vérifier si un utilisateur suit déjà une annonce
@@ -49,4 +49,33 @@ class suivi extends _model {
             return false;
         }
     }
+    /*=====================================================
+      2.            getSuivisByUtilisateur
+    =======================================================*/
+    function getSuivisByUtilisateur($utilisateurId){
+
+        // Rôle : recuperer les suivis d'un utilisateur
+        // Parametre : $utilisateurId
+        // Retour : tableau d'objets suivis
+        $sql="SELECT *
+            FROM `$this->table`
+            WHERE utilisateur_id=:utilisateur_id";
+
+        $req=$this->execute($sql,[
+            ":utilisateur_id"=>$utilisateurId
+        ]);
+
+        $resultats=$req->fetchAll(PDO::FETCH_ASSOC);
+        $suivis=[];
+        $className=get_class($this);
+
+        foreach($resultats as $ligne){
+            $objet=new $className();
+            $objet->loadFromtab($ligne);
+            $suivis[]=$objet;
+        }
+
+        return $suivis;
+    }  
+
 }
