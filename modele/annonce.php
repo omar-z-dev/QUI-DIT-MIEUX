@@ -101,12 +101,11 @@ class annonce extends _model {
                             ":categorie1"=>14
                         ];*/
             }
-
+            //implode retourne une chaine de caractères
             $sql.=" AND categorie IN (".implode(",",$placeholders).")";
         }
         // État
         if(!empty($etat)){
-
             $sql.=" AND etat = :etat";
             $params[":etat"] = $etat;
         }

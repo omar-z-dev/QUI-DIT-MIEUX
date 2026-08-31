@@ -42,14 +42,43 @@ else{
 
 // RECHERCHER LES ANNONCES
 
-
-
 $annonce = new annonce();
 // Récupérer les catégories depuis l'API
 $api = new api();
 $categories = $api->getCategoryByCurl();
 
+
 $ListeAnnonces = $annonce->rechercherCategoriesByCriteres($texte,$categorie,$etat,$prix,$vente);
+
+
+foreach($ListeAnnonces as $annonce){
+
+    // Récupérer la photo principale de cette annonce
+    $photo = new photo();
+    $photoPrincipale = $photo->getPhotoPrincipale(
+        $annonce->id()
+    );
+
+    // Récupérer la meilleure enchère de cette annonce
+    $enchere = new enchere();
+    $meilleureEnchere = $enchere->getMeilleureEnchere(
+        $annonce->id()
+    );
+
+    // Déterminer le prix courant
+    if($meilleureEnchere){
+        $prixCourant = $meilleureEnchere->value("montant");
+
+    }else{
+        $prixCourant = $annonce->value("prix_depart");
+    }
+
+    // Ajouter les informations à l'objet annonce
+    $annonce->set("photo_principale",$photoPrincipale);
+    $annonce->set("prix_courant",$prixCourant);
+}
+
+
 
 
 /*echo "<pre>";

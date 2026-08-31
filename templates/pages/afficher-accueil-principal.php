@@ -42,9 +42,11 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
 
             Pour proposer, encherir ou suivre une annonce, il faut <strong>s'inscrire</strong> ou <strong>se connecter</strong>.
         </p><br>
-        <!-- Affichage les objets proposés -->
+
+        <!-- Affichage des objets proposés -->
         <section>
             <h3>Liste des objets proposés :</h3>
+            <p>Voici la liste des annonces proposées par les utilisateurs de la plateforme</p>
             <div class="liste-annonces">
                 <?php if (empty($ListeAnnonces)): ?>
 
@@ -98,6 +100,7 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
         <!-- Formulaire de recherche -->
         <section>
             <h3>Rechercher une annonce :</h3>
+            <p>Vous pouvez rechercher une annonce selon plusieurs critères en remplissant le formulaire ci-dessous</p>
 
             <form action="rechercher-annonces.php" method="GET">
 
