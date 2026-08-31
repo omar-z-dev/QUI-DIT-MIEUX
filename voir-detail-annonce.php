@@ -26,12 +26,13 @@ $estSuivie = $utilisateurId !== null
     ? $suivi->estSuivie($utilisateurId, $id)
     : false;
 
-// Code catégorie de l'annonce
-$codeCategorie = $annonce->value("categorie");
 
 // Récupérer les catégories depuis l'API
 $api = new api();
 $categories = $api->getCategoryByCurl();
+
+// Code catégorie de l'annonce
+$codeCategorie = $annonce->value("categorie");
 
 // Libellé catégorie venant de l'API
 $libelleCategorie = $categories->{$codeCategorie};
@@ -43,7 +44,6 @@ $photoPrincipale = $photo->getPhotoPrincipale($id);
 
 // Chercher la meilleure enchère existante
 $enchere = new enchere();
-
 $meilleureEnchere = $enchere->getMeilleureEnchere($id);
 
 // Afficher la page détail annonce

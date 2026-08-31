@@ -42,12 +42,18 @@ else{
 
 // RECHERCHER LES ANNONCES
 
+
+
 $annonce = new annonce();
+// Récupérer les catégories depuis l'API
+$api = new api();
+$categories = $api->getCategoryByCurl();
 
-$ListeAnnonces=$annonce->rechercherCategoriesByCriteres($texte,$categorie,$etat,$prix,$vente);
+$ListeAnnonces = $annonce->rechercherCategoriesByCriteres($texte,$categorie,$etat,$prix,$vente);
 
-echo "<pre>";
+
+/*echo "<pre>";
 print_r($ListeAnnonces);
-echo "</pre>";
+echo "</pre>";*/
 
 require "templates/pages/afficher-resultats-recherche.php";

@@ -65,6 +65,7 @@ Paramètres : id de l'annonce
 
             <p><strong>Description : </strong><br><br>
             <?= $annonce->html("description") ?></p>
+            
             <p><strong>Etat : </strong><?= $annonce->html("etat") ?></p>
             <p><strong>Prix de départ : </strong><?= $annonce->html("prix_depart") ?> €</p>
 
