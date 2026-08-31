@@ -49,21 +49,28 @@ $categories = $api->getCategoryByCurl();
 
 
 $ListeAnnonces = $annonce->rechercherCategoriesByCriteres($texte,$categorie,$etat,$prix,$vente);
+  
+// Créer les objets
+$photo   =new photo();
+$enchere =new enchere();
 
+// Tableaux contenant les informations de chaque annonce
+$photosPrincipales=[];
+$prixCourants=[];
 
 foreach($ListeAnnonces as $annonce){
 
-    // Récupérer la photo principale de cette annonce
-    $photo = new photo();
-    $photoPrincipale = $photo->getPhotoPrincipale(
-        $annonce->id()
-    );
+    // Récupérer l'ID de l'annonce actuelle
+    $annonceId = $annonce->id();
 
-    // Récupérer la meilleure enchère de cette annonce
-    $enchere = new enchere();
-    $meilleureEnchere = $enchere->getMeilleureEnchere(
-        $annonce->id()
-    );
+    // Récupérer la photo principale ($photoPrincipale contient un objet photo)
+    $photoPrincipale = $photo->getPhotoPrincipale($annonceId);
+
+    // Stocker la photo (Objet photo)avec l'ID de l'annonce
+    $photosPrincipales[$annonceId] = $photoPrincipale;
+
+    // Récupérer la meilleure enchère
+    $meilleureEnchere = $enchere->getMeilleureEnchere($annonceId);
 
     // Déterminer le prix courant
     if($meilleureEnchere){
@@ -73,13 +80,9 @@ foreach($ListeAnnonces as $annonce){
         $prixCourant = $annonce->value("prix_depart");
     }
 
-    // Ajouter les informations à l'objet annonce
-    $annonce->set("photo_principale",$photoPrincipale);
-    $annonce->set("prix_courant",$prixCourant);
+    // Stocker le prix avec l'ID de l'annonce
+    $prixCourants[$annonceId] = $prixCourant;
 }
-
-
-
 
 /*echo "<pre>";
 print_r($ListeAnnonces);

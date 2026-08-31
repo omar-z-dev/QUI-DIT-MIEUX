@@ -43,11 +43,12 @@ Paramètres :
                     <div class="card-annonce">
 
                         <!-- image principale -->
-                        <?php if ($photoPrincipale): ?>
-                            <img
-                                src="img/<?= $photoPrincipale->html("fichier") ?>"
-                                alt="<?= $annonce->html("titre") ?>"
-                                class="image-annonce">
+                        <?php if($photosPrincipales[$annonce->id()]): ?>
+
+                        <img
+                            src="img/<?= $photosPrincipales[$annonce->id()]->html("fichier") ?>"
+                            alt="<?= $annonce->html("titre") ?>"
+                            class="image-annonce">
 
                         <?php else: ?>
                             <div class="sans-image">📷 Aucune image</div>
@@ -56,17 +57,8 @@ Paramètres :
                         <!-- titre -->
                         <h2><?= $annonce->html("titre") ?></h2>
 
-
-
-
-
-
                         <!-- prix courant -->
-                        <p class="prix">💰 Prix :  <strong><?= htmlspecialchars($prixCourant) ?> €</strong></p>
-
-
-
-
+                        <p class="prix">💰 Prix :  <strong><?= htmlspecialchars($prixCourants[$annonce->id()]) ?> €</strong></p>
 
 
                         <!-- date de fin -->
