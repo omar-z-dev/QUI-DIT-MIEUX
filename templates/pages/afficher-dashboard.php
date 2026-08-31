@@ -44,7 +44,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                     <?= $utilisateur->html("pseudo") ?> 👋
                 </h2>
                 <p>
-                    Gérez vos annonces et vos enchères depuis votre espace personnel.
+                    Gérez vos annonces, enchères et annonces suivies depuis votre espace personnel.
                 </p>
             </section>
 
@@ -52,7 +52,9 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
             <section>
 
                 <h2>Mes annonces ✅</h2>
-                <p>Liste de mes annonces</p>
+                <p>Retrouvez ci-dessous la liste de vos annonces.<br><br>
+                Vous pouvez modifier ou supprimer une annonce tant qu'aucune enchère n'a été enregistrée.</p>
+                <p>Vous pouvez aussi ajouter une annonce en cliquant sur le bouton Créer une annonce.</p>
 
                 <!-- message apres ajout d'une annonce -->
                 <?php if (isset($_SESSION["success_annonce"])): ?>
