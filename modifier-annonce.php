@@ -11,7 +11,7 @@ paramètres :  id de l'annonce
 require_once "libr/init.php";
 
 // Connexion requise
-require "library/require_login.php";
+require "libr/require_login.php";
 
 // Récupération de l'id de l'annonce à modifier
 $annonceId = $_GET["id"] ?? "";

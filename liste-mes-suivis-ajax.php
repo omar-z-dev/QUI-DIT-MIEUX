@@ -13,7 +13,7 @@ Paramètres : neant
 require_once "libr/init.php";
 
 // Connexion requise
-require "library/require_login.php";
+require "libr/require_login.php";
 
 // Récupérer l'utilisateur connectés
 $utilisateur = userConnected();

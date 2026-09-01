@@ -14,6 +14,7 @@ Paramètres GET :
 
 */
 
+// Initialisation
 require_once "libr/init.php"; 
 
 // Récupérer les paramètres

@@ -12,7 +12,7 @@ param: annonce_id
 require_once "libr/init.php";
 
 // Connexion requise
-require "library/require_login.php";
+require "libr/require_login.php";
 
 // ID de l'utilisateur connecté
 $utilisateurId = $_SESSION["id"];

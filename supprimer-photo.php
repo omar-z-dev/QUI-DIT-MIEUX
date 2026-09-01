@@ -16,7 +16,7 @@ Paramètres GET :
 require_once "libr/init.php";
 
 // Connexion requise
-require "library/require_login.php";
+require "libr/require_login.php";
 
 // Récupérer les identifiants
 $photoId   = $_GET["id"] ?? 0;

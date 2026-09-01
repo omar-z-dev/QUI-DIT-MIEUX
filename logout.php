@@ -2,7 +2,7 @@
 /*
 
 CONTROLEUR :
-Rôle : fermer la session et rediriger vers la page d'accueil
+Rôle : déconnecter l'utilisateur connecté et rediriger vers la page d'accueil
 paramètres : aucun
 
 */
