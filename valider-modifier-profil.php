@@ -16,8 +16,8 @@ require_once "libr/init.php";
 require "libr/require_login.php";
 
 // Récupérer les données du formulaire
-$pseudo = trim($_POST["pseudo"]??"");
-$email  = trim($_POST["email"]??"");
+$pseudo = trim($_POST["pseudo"]?? "");
+$email  = trim($_POST["email"]?? "");
 
 // Vérifier que les champs ne sont pas vides
 if(empty($pseudo)||empty($email)){
