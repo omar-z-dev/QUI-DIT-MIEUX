@@ -32,7 +32,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
         <header>
             <!-- Navigation -->
             <nav>
-                <a href="profil.php">Modifier mon profil</a>
+                <a href="modifier-profil.php">Modifier mon profil</a>
                 <a href="logout.php">Me deconnecter</a>
             </nav>
         </header>
@@ -48,6 +48,12 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                 <?php if (isset($_SESSION["error"])): ?>
                     <p style="color:red; font-weight:bold;"><?= $_SESSION["error"] ?></p>
                     <?php unset($_SESSION["error"]); ?>
+                <?php endif; ?>
+                
+                <!-- message de succes modif profil-->
+                <?php if (isset($_SESSION["success_profil"])): ?>
+                   <p style="color:green; font-weight:bold;"><?= $_SESSION["success_profil"] ?></p>
+                    <?php unset($_SESSION["success_profil"]); ?>
                 <?php endif; ?>
 
                 <p>
