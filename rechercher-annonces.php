@@ -16,12 +16,17 @@ Paramètres GET :
 
 require_once "libr/init.php"; 
 
-// Récupérer les critères du formulaire
+// Récupérer les paramètres
 $texte     = trim($_GET["texte"]??"");
 $categorie = trim($_GET["recherche_categorie"]??"");
 $etat      = $_GET["etat"]??"";
 $prix      = $_GET["prix"]??"";
 $vente     = $_GET["vente"]??"";
+
+
+/*===================================================================
+    RECHERCHER LES CATÉGORIES (retour:tableau des code des catégories trouvées)
+====================================================================*/
 
 // Instancier l'objet API
 $api = new api();
@@ -40,23 +45,22 @@ else{
     $categorie=[];
 }
 
-// RECHERCHER LES ANNONCES
+/*==============================
+    RECHERCHER LES ANNONCES
+================================*/
 
 $annonce = new annonce();
-// Récupérer les catégories depuis l'API
-$api = new api();
-$categories = $api->getCategoryByCurl();
 
-
+// Récupérer les annonces correspondantes
 $ListeAnnonces = $annonce->rechercherCategoriesByCriteres($texte,$categorie,$etat,$prix,$vente);
   
-// Créer les objets
+// Créer les objets photo et enchere
 $photo   = new photo();
 $enchere = new enchere();
 
 // Tableaux contenant les informations de chaque annonce
-$photosPrincipales=[];
-$prixCourants=[];
+$photosPrincipales = [];
+$prixCourants      = [];
 
 foreach($ListeAnnonces as $annonce){
 

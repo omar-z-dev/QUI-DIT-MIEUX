@@ -87,7 +87,6 @@ switch ($action) {
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
                 $_SESSION["error_register"] = "Email invalide ❌";
-
                 header("Location: auth.php?action=register");
                 exit;
             }
@@ -96,7 +95,6 @@ switch ($action) {
             if (!preg_match("/^[a-zA-ZÀ-ÿ -]{2,50}$/", $pseudo)) {
 
                 $_SESSION["error_register"] = "pseudo invalide ❌";
-
                 header("Location: auth.php?action=register");
                 exit;
             }
@@ -105,12 +103,13 @@ switch ($action) {
             if ($utilisateur->findBy("email", $email)) {
 
                 $_SESSION["error_register"] = "Cet email existe déjà ❌";
-
                 header("Location: auth.php?action=register");
                 exit;
             }
 
-            //*******!recaptchat 
+            /*================================
+                       RECAPTCHA
+            ================================*/
 
             $recaptcha = new recaptcha();
 

@@ -3,7 +3,8 @@ Librairies des fonctions spécifiques générales du projet
 */
 
 /*==========================================================  
-         role : Actualiser les annonces
+         role : Actualiser l'afficahge de la 
+         liste de mes annonces
 ===========================================================*/
 function actualiserMesAnnonces() {
   console.log("actualiserMesAnnonces");

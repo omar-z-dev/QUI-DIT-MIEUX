@@ -1,15 +1,23 @@
 <?php
+/*
 
+CONTROLEUR :
+Rôle : afficher la liste des annonces de l'utilisateur connecté
+param : néant
+
+*/
+
+// Initialisations
 require_once "libr/init.php";
 
 //Charger l'utilisateur connecté
 $utilisateur = userConnected();
 
 // Récupérer les annonces de l'utilisateur
-$annonce = new annonce();
+$annonce     = new annonce();
 $mesAnnonces = $annonce->listAllByUser($utilisateur->id());
 
-// Tableaux
+// Tableaux pour stocker les derniers prix et les statuts
 $derniersPrix = [];
 $statuts      = [];
 
