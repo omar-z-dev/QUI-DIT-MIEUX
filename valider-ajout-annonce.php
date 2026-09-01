@@ -8,7 +8,11 @@ Paramètre : les données du formulaire (titre, categorie, description, etat, pr
 
 */
 
+// Initialisation
 require_once "libr/init.php";
+
+// Connexion requise
+require "library/require_login.php";
 
 /*var_dump($_SESSION);
 exit;*/

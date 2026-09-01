@@ -11,7 +11,11 @@ Paramètres : aucun
 
 */
 
+// Initialisation
 require_once "libr/init.php";
+
+// Connexion requise
+require "library/require_login.php";
 
 // Récupérer l'utilisateur connecté
 $utilisateur = userConnected();

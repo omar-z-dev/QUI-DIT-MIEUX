@@ -30,9 +30,20 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
 
     <main>
         <h1> Bienvenue sur QuiDitMieux  💵💵 </h1>
+
+        <?php
+            // Message si nécessaire connection obligatoire
+            if(!empty($message)): ?>
+            <p style="color:red;font-weight:bold;">
+                <?= htmlspecialchars($message) ?>
+            </p>
+        <?php endif; ?>
+
         <h2>Accueil publique</h2>
-        <!-------- message de deconexion  ------->
-        <?php if (!empty($messageTimeout)): ?>
+        
+        <?php 
+            //message de deconexion
+            if (!empty($messageTimeout)): ?>
             <p style="color:red; font-weight:bold;">
                 <?= $messageTimeout ?>
             </p>

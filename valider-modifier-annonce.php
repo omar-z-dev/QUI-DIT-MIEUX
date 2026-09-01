@@ -17,13 +17,11 @@ Paramètres POST :
 
 */
 
+// Initialisation
 require_once "libr/init.php";
 
-// Vérifier que l'utilisateur est connecté
-if (empty($_SESSION["connected"])) {
-    header("Location: auth.php?action=login");
-    exit;
-}
+// Connexion requise
+require "library/require_login.php";
 
 // Récupérer les données du formulaire
 $annonceId  = $_POST["annonce_id"] ?? 0;

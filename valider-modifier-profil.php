@@ -9,7 +9,11 @@ Paramètres POST :
 - email : nouvel email
 */
 
+// Initialisation
 require_once "libr/init.php";
+
+// Connexion requise
+require "library/require_login.php";
 
 // Récupérer les données du formulaire
 $pseudo = trim($_POST["pseudo"]??"");

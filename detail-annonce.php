@@ -8,6 +8,9 @@ Paramètre : id de l'annonce
 
 require_once "libr/init.php";
 
+// Connexion requise
+require "library/require_login.php";
+
 // Récupérer l'id de l'annonce
 $id = $_GET["id"] ?? 0;
 

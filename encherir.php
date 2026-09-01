@@ -14,6 +14,9 @@ Paramètres :
 // Initialisation
 require_once "libr/init.php";
 
+// Connexion requise
+require "library/require_login.php";
+
 // Récupérer les données du formulaire
 $annonceId = $_POST["annonce_id"] ?? 0;
 $montant   = $_POST["montant"] ?? "";

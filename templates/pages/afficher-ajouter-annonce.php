@@ -30,6 +30,7 @@ Paramètres : $categories : liste des categories de l'api
         <h2>Créer une annonce</h2>
         <p>Remplissez le formulaire ci-dessous puis validez pour créer une nouvelle annonce :</p>
         <p>Vous pouvez importer une ou plusieurs photos à votre annonce. L'ajout de photos est facultatif.</p>
+        
         <!-- message d'erreur -->
         <?php if (!empty($_SESSION["error_annonce"])): ?>
             <p style="color:red; font-weight:bold;"><?= $_SESSION["error_annonce"] ?></p>

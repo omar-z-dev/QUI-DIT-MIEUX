@@ -10,6 +10,9 @@ paramètre : l'objet $categories : liste des categories de l'api
 // Initialisations diverses
 require_once "libr/init.php";
 
+// Connexion requise
+require "library/require_login.php";
+
 //Instacier un objet api
 $api = new api();
 
