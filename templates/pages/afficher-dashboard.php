@@ -43,6 +43,13 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                     Bienvenue sur votre dashboard
                     <?= $utilisateur->html("pseudo") ?> 👋
                 </h2>
+                
+                <!-- message erreur pas acces historique encheres -->
+                <?php if (isset($_SESSION["error"])): ?>
+                    <p style="color:red; font-weight:bold;"><?= $_SESSION["error"] ?></p>
+                    <?php unset($_SESSION["error"]); ?>
+                <?php endif; ?>
+
                 <p>
                     Gérez vos annonces, enchères et annonces suivies depuis votre espace personnel.
                 </p>
@@ -149,93 +156,83 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                 <table border="1" cellpadding="10" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Titre</th>
-                            <th>Montant</th>
-                            <th>Date</th>
+                            <th>Annonce</th>
+                            <th>Dernier prix proposé</th>
+                            <th>Statut</th>
+                            <th>Fin de l'enchère</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($mesEncheres as $enchere): ?>
-                            <?php $annonce = $enchere->get("annonce_id"); ?>
+                        <?php foreach($annoncesEncheries as $annonceId => $annonce): ?>
                             <tr>
                                 <td><?= $annonce->html("titre") ?></td>
-                                <td><?= $enchere->html("montant") ?> €</td>
-                                <td><?= $enchere->html("date_enchere") ?></td>
+
+                                <td><?= $prixCourants[$annonceId] ?> €</td>
+
+                                <td><?= $statutsEncheres[$annonceId] ?></td>
+
+                                <td>
+                                    <?= date(
+                                        "d/m/Y H:i",
+                                        strtotime($annonce->value("date_fin"))
+                                    ) ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             <?php endif; ?>
-        </section>
+        </section><br><br>
 
-            <!----------------- Annonces suivies -------------------->
-            <!----------------- Annonces suivies -------------------->
+
+            <!------------ Mes enchères remportées ---------------->
+            <!------------ Mes enchères remportées ---------------->
 
             <section>
-                <h2>Mes annonces suivies 👣</h2>
+                <h2> Mes enchères remportées 🏆</h2>
 
-                <?php if(empty($mesSuivis)): ?>
-                    <p>Vous ne suivez aucune annonce.</p>
+                <?php if(empty($encheresRemportees)): ?>
+                    <p>Vous n'avez remporté aucune enchère.</p>
                 <?php else: ?>
                     <table border="1" cellpadding="10" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Vendeur</th>
-                                <th>Titre de l'annonce</th>
-                                <th>Nombre d'enchères</th>
-                                <th>Prix courant</th>
+                                <th>Annonce</th>
                                 <th>Date et heure de fin</th>
-                                <th>Détail</th>
-                                <th>Historique</th>
+                                <th>Prix remporté</th>
+                                <th>Statut</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach($mesSuivis as $suivi): ?>
-                                
-                                <!-- On recupere l'objet annonce -->
-                                <?php $annonce = $suivi->get("annonce_id"); 
-                                $annonceId = $annonce->id();
-                                ?>
+                            <?php foreach($encheresRemportees as $annonceId => $annonce): ?>
                                 <tr>
-                                    <!-- Vendeur -->
+                                    <!-- Annonce -->
+                                    <td><?= $annonce->html("titre") ?></td>
+
+                                    <!-- Date et heure de fin -->
                                     <td>
-                                        <?=htmlspecialchars( $vendeurs[$annonceId] )?>
+                                        <?= date(
+                                            "d/m/Y H:i",
+                                            strtotime($annonce->value("date_fin")))?>
                                     </td>
 
-                                    <!-- Titre de l'annonce -->
-                                    <td><?= $annonce->html("titre") ?>
-                                    </td>
+                                    <!-- Prix remporté -->
+                                    <td><?= $prixCourants[$annonceId] ?> €</td>
 
-                                    <!-- Nombre d'enchères -->
-                                    <td>
-                                        <?= $nombreEncheres[$annonceId] ?>
-                                    </td>
-
-                                    <!-- Prix courant -->
-                                    <td> Prix courant :
-                                        <?= $prixCourantsAll[$annonceId] ?> €
-                                    </td>
-                                        
-                                    <!-- Date heure de fin -->
-                                    <td> <?= date("Y-m-d à H:i", strtotime($annonce->value("date_fin"))) ?>
-                                    </td>
-
-                                    <!-- Voir l'annonce -->
-                                    <td>
-                                        <a href="detail-annonce.php?id=<?= $annonce->id() ?>">
-                                        Voir l'annonce 🧐</a>
-                                    </td>
-                                    <!--Voir historique des encheres-->
-                                    <td>
-                                        <a href="historique-encheres.php?id=<?= $annonce->id() ?>">
-                                        Voir historique des encheres 🧐</a>
-                                    </td>
+                                    <!-- Statut -->
+                                    <td>🏆 Remportée</td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
                 <?php endif; ?>
-            </section>
+            </section><br><br>
+
+            <!----------------- Annonces suivies -------------------->
+            <!----------------- Annonces suivies -------------------->
+
+            <div id="bloc-mes-suivis"></div>
+
         </main>
 
         <!-- js scripts-->

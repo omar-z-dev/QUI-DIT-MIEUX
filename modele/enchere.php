@@ -117,7 +117,24 @@ class enchere extends _model {
             $objet->loadFromtab($ligne);
             $encheres[] = $objet;
         }
-
         return $encheres;
+    }
+    /*=====================================================
+      5.  utilisateurAEncheri
+    =======================================================*/
+    function utilisateurAEncheri($annonceId,$utilisateurId){
+        // Rôle : verifier si l'utilisateur a encheri sur cette annonce
+        // Parametre : $annonceId, $utilisateurId
+        // Retour : booleen
+        $sql = "SELECT *
+                FROM enchere
+                WHERE annonce_id = :annonce_id
+                AND utilisateur_id = :utilisateur_id";
+        $req = $this->execute($sql, [
+            ":annonce_id"     => $annonceId,
+            ":utilisateur_id" => $utilisateurId
+        ]);
+        $ligne = $req->fetch(PDO::FETCH_ASSOC);
+        return !empty($ligne);
     }
 }

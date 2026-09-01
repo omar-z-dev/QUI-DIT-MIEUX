@@ -53,4 +53,4 @@ Paramètres : aucun
         </select>
     </div>
     <button type="submit">Rechercher</button>
-</form>
+</form><br><br>
