@@ -22,7 +22,7 @@ $montant   = $_POST["montant"] ?? "";
 if (empty($annonceId) || $montant === "") {
 
     $_SESSION["enchere"] = "Montant invalide ❌";
-    header("Location: voir-detail-annonce.php?id=" . $annonceId);
+    header("Location: detail-annonce.php?id=" . $annonceId);
     exit;
 }
 
@@ -31,7 +31,7 @@ if (empty($annonceId) || $montant === "") {
 if (!is_numeric($montant) || $montant <= 0) {
 
     $_SESSION["enchere"] = "Montant doit etre un nombre positif ❌";
-    header("Location: voir-detail-annonce.php?id=" . $annonceId);
+    header("Location: detail-annonce.php?id=" . $annonceId);
     exit;
 }
 
@@ -46,7 +46,7 @@ if ($annonce->value("utilisateur_id") == $_SESSION["id"]) {
 
     $_SESSION["enchere"] =
         "Vous ne pouvez pas enchérir sur votre propre annonce ❌";
-    header("Location: voir-detail-annonce.php?id=" . $annonceId);
+    header("Location: detail-annonce.php?id=" . $annonceId);
     exit;
 }
 
@@ -55,7 +55,7 @@ if (strtotime($annonce->value("date_fin")) <= time()) {
 
     $_SESSION["enchere"] =
         "Cette vente est terminée, vous ne pouvez plus encherir ❌";
-    header("Location: voir-detail-annonce.php?id=" . $annonceId);
+    header("Location: detail-annonce.php?id=" . $annonceId);
     exit;
 }
 
@@ -71,7 +71,7 @@ if (!$meilleureEnchere) {
         $_SESSION["enchere"] =
             "Votre enchère doit être supérieure au prix de départ ❌";
 
-        header("Location: voir-detail-annonce.php?id=" . $annonceId);
+        header("Location: detail-annonce.php?id=" . $annonceId);
         exit;
     }
 }
@@ -83,7 +83,7 @@ else {
 
         $_SESSION["enchere"] =
             "Votre enchère doit être supérieure à l'enchère actuelle ❌";
-        header("Location: voir-detail-annonce.php?id=" . $annonceId);
+        header("Location: detail-annonce.php?id=" . $annonceId);
         exit;
     }
 }
@@ -106,7 +106,7 @@ if ($resultat) {
 
     $_SESSION["enchere"] =
         "✅ Votre enchère a bien été enregistrée";
-    header("Location: voir-detail-annonce.php?id=" . $annonceId);
+    header("Location: detail-annonce.php?id=" . $annonceId);
     exit;
 }
 

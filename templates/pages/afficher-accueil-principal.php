@@ -85,7 +85,7 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
                                 <td> <?= date("Y-m-d à H:i", strtotime($annonce->value("date_fin"))) ?>
                                 </td>
                                 <td>
-                                    <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                                    <a href="detail-annonce.php?id=<?= $annonce->id() ?>">
                                         Voir detail 🧐
                                     </a>
                                 </td>

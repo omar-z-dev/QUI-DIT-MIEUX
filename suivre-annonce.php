@@ -21,7 +21,7 @@ if ($annonce->value("utilisateur_id") == $_SESSION["id"]) {
 
     $_SESSION["suivi"] =
         "Vous ne pouvez pas suivre votre propre annonce.";
-    header("Location: voir-detail-annonce.php?id=" . $annonceId);
+    header("Location: detail-annonce.php?id=" . $annonceId);
     exit;
 }
 
@@ -33,7 +33,7 @@ if ($suivi->estSuivie($_SESSION["id"], $annonceId)) {
 
     $_SESSION["suivi"] =
         "Vous suivez déjà cette annonce.";
-    header("Location: voir-detail-annonce.php?id=" . $annonceId);
+    header("Location: detail-annonce.php?id=" . $annonceId);
     exit;
 }
 
@@ -57,5 +57,5 @@ if ($resultat) {
 }
 
 // Retourner sur l'annonce
-header("Location: voir-detail-annonce.php?id=" . $annonceId);
+header("Location: detail-annonce.php?id=" . $annonceId);
 exit;

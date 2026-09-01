@@ -116,7 +116,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                         Supprimer ❌</a>
                                     </td>
                                     <td>
-                                        <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                                        <a href="detail-annonce.php?id=<?= $annonce->id() ?>">
                                         Voir detail 🧐</a>
                                     </td>
                                 </tr>
@@ -179,7 +179,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                     <td> <?= date("Y-m-d à H:i", strtotime($annonce->value("date_fin"))) ?>
                                     </td>
                                     <td>
-                                        <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                                        <a href="detail-annonce.php?id=<?= $annonce->id() ?>">
                                         Voir detail 🧐</a>
                                     </td>
                                 </tr>
@@ -255,7 +255,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                 <tr>
                                     <td><?= $annonce->html("titre") ?></td>
                                     <td>
-                                        <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                                        <a href="detail-annonce.php?id=<?= $annonce->id() ?>">
                                             Voir l'annonce 🧐
                                         </a>
                                     </td>

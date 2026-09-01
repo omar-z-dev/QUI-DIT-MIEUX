@@ -55,7 +55,7 @@ $statuts : statut de chaque annonce
                     Supprimer ❌</a>
                 </td>
                 <td>
-                    <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                    <a href="detail-annonce.php?id=<?= $annonce->id() ?>">
                     Voir detail 🧐</a>
                 </td>
             </tr>

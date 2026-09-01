@@ -50,29 +50,74 @@ class enchere extends _model {
     /*=====================================================
       2.  getEncheresByAnnonce
     =======================================================*/
-    public function getEncheresByUtilisateur($utilisateurId){
+    function getEncheresByUtilisateur($utilisateurId){
 
-    // Rôle : recuperer les encheres d'un utilisateur
-    // Parametre : $utilisateurId
-    // Retour : tableau d'objets enchere
-    $sql="SELECT *
-          FROM `$this->table`
-          WHERE utilisateur_id = :utilisateur_id
-          ORDER BY montant DESC";
+        // Rôle : recuperer les encheres d'un utilisateur
+        // Parametre : $utilisateurId
+        // Retour : tableau d'objets enchere
+        $sql="SELECT *
+            FROM `$this->table`
+            WHERE utilisateur_id = :utilisateur_id
+            ORDER BY montant DESC";
 
-    $req=$this->execute($sql,[
-        ":utilisateur_id"=>$utilisateurId
-    ]);
-    $resultats = $req->fetchAll(PDO::FETCH_ASSOC);
-    $encheres = [];
-    $className = get_class($this);
+        $req=$this->execute($sql,[
+            ":utilisateur_id"=>$utilisateurId
+        ]);
+        $resultats = $req->fetchAll(PDO::FETCH_ASSOC);
+        $encheres = [];
+        $className = get_class($this);
 
-    foreach($resultats as $ligne){
-        $objet = new $className();
-        $objet->loadFromtab($ligne);
-        $encheres[]=$objet;
+        foreach($resultats as $ligne){
+            $objet = new $className();
+            $objet->loadFromtab($ligne);
+            $encheres[]=$objet;
+        }
+
+        return $encheres;
     }
+    /*=====================================================
+      3.  getEncheresByAnnonce
+    =======================================================*/
+    function countEncheresByAnnonce($annonceId){
+        // Rôle : compter les encheres d'une annonce
+        // Paramètre : id de l'annonce
+        // Retour : intier
 
-    return $encheres;
-}
+        $sql = "SELECT COUNT(*) AS nombre
+                FROM enchere
+                WHERE annonce_id = :annonce_id";
+        $params = [
+            ":annonce_id" => $annonceId
+        ];
+        $req = $this->execute($sql, $params);
+        $resultat = $req->fetch(PDO::FETCH_ASSOC);
+        return $resultat["nombre"];
+    }
+    /*=====================================================
+      4.  getEncheresByAnnonce
+    =======================================================*/
+    function getEncheresByAnnonce($annonceId){
+        // Rôle : recuperer les encheres d'une annonce
+        // Parametre : $annonceId
+        // Retour : tableau d'objets enchere
+        $sql="SELECT *
+            FROM `$this->table`
+            WHERE annonce_id = :annonce_id
+            ORDER BY montant DESC";
+
+        $req=$this->execute($sql,[
+            ":annonce_id"=>$annonceId
+        ]);
+        $resultats = $req->fetchAll(PDO::FETCH_ASSOC);
+        $encheres  = [];
+        $className = get_class($this);
+
+        foreach($resultats as $ligne){
+            $objet = new $className();
+            $objet->loadFromtab($ligne);
+            $encheres[] = $objet;
+        }
+
+        return $encheres;
+    }
 }

@@ -99,7 +99,6 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                 <th>Prix de départ</th>
                                 <th>Date de fin</th>
                                 <th>Voir l'annonce</th>
-                                
                             </tr>
                         </thead>
 
@@ -120,7 +119,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                     <td> <?= date("Y-m-d à H:i", strtotime($annonce->value("date_fin"))) ?>
                                     </td>
                                     <td>
-                                        <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
+                                        <a href="detail-annonce.php?id=<?= $annonce->id() ?>">
                                         Voir detail 🧐</a>
                                     </td>
                                 </tr>
@@ -181,20 +180,55 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                     <table border="1" cellpadding="10" cellspacing="0">
                         <thead>
                             <tr>
+                                <th>Vendeur</th>
                                 <th>Titre de l'annonce</th>
+                                <th>Nombre d'enchères</th>
+                                <th>Prix courant</th>
+                                <th>Date et heure de fin</th>
                                 <th>Détail</th>
+                                <th>Historique</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach($mesSuivis as $suivi): ?>
+                                
                                 <!-- On recupere l'objet annonce -->
-                                <?php $annonce = $suivi->get("annonce_id"); ?>
+                                <?php $annonce = $suivi->get("annonce_id"); 
+                                $annonceId = $annonce->id();
+                                ?>
                                 <tr>
-                                    <td><?= $annonce->html("titre") ?></td>
+                                    <!-- Vendeur -->
                                     <td>
-                                        <a href="voir-detail-annonce.php?id=<?= $annonce->id() ?>">
-                                            Voir l'annonce 🧐
-                                        </a>
+                                        <?=htmlspecialchars( $vendeurs[$annonceId] )?>
+                                    </td>
+
+                                    <!-- Titre de l'annonce -->
+                                    <td><?= $annonce->html("titre") ?>
+                                    </td>
+
+                                    <!-- Nombre d'enchères -->
+                                    <td>
+                                        <?= $nombreEncheres[$annonceId] ?>
+                                    </td>
+
+                                    <!-- Prix courant -->
+                                    <td> Prix courant :
+                                        <?= $prixCourantsAll[$annonceId] ?> €
+                                    </td>
+                                        
+                                    <!-- Date heure de fin -->
+                                    <td> <?= date("Y-m-d à H:i", strtotime($annonce->value("date_fin"))) ?>
+                                    </td>
+
+                                    <!-- Voir l'annonce -->
+                                    <td>
+                                        <a href="detail-annonce.php?id=<?= $annonce->id() ?>">
+                                        Voir l'annonce 🧐</a>
+                                    </td>
+                                    <!--Voir historique des encheres-->
+                                    <td>
+                                        <a href="historique-encheres.php?id=<?= $annonce->id() ?>">
+                                        Voir historique des encheres 🧐</a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>

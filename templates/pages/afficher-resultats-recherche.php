@@ -66,7 +66,7 @@ Paramètres :
 
                         <!-- voir detail -->
                         <a
-                            href="voir-detail-annonce.php?id=<?= $annonce->id() ?>"
+                            href="detail-annonce.php?id=<?= $annonce->id() ?>"
                             class="btn-detail"> Voir l'annonce 🧐</a>
                     </div>
                 <?php endforeach; ?>
