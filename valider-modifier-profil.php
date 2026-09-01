@@ -1,12 +1,15 @@
 <?php
 
 /*
+
 CONTROLEUR :
 Rôle : valider et enregistrer les modifications du profil
 
 Paramètres POST :
 - pseudo : nouveau pseudo
 - email : nouvel email
+- mdp
+
 */
 
 // Initialisation
@@ -16,23 +19,31 @@ require_once "libr/init.php";
 require "libr/require_login.php";
 
 // Récupérer les données du formulaire
-$pseudo = trim($_POST["pseudo"]?? "");
-$email  = trim($_POST["email"]?? "");
+$pseudo   = trim($_POST["pseudo"]?? "");
+$email    = trim($_POST["email"]?? "");
+$password = $_POST["password"]??"";
 
-// Vérifier que les champs ne sont pas vides
-if(empty($pseudo)||empty($email)){
-    $_SESSION["error"] = "Le pseudo et l'email sont obligatoires.";
-
-    header("Location: modifier-profil.php");
-    exit;
-}
 
 // Charger l'utilisateur connecté
 $utilisateur = userConnected();
 
-// Modifier les informations
-$utilisateur->set("pseudo",$pseudo);
-$utilisateur->set("email",$email);
+
+// Modifier le pseudo seulement s'il est saisi
+if(!empty($pseudo)){
+    $utilisateur->set("pseudo",$pseudo);
+}
+
+// Modifier l'email seulement s'il est saisi
+if(!empty($email)){
+    $utilisateur->set("email",$email);
+}
+
+// Modifier le mot de passe seulement s'il est saisi
+if(!empty($password)){
+
+    $passwordHash=password_hash($password, PASSWORD_DEFAULT );
+    $utilisateur->set("password",$passwordHash);
+}
 
 // Enregistrer les modifications
 $resultat = $utilisateur->update();

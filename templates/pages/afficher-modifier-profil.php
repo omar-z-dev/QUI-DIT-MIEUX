@@ -21,7 +21,7 @@ Paramètres : $utilisateur
 
 <header>
     <nav>
-        <a href="dashboard.php">Tableau de bord</a>
+        <a href="dashboard.php"><Data>Mon Dashboard</Data></a>
         <a href="logout.php">Me déconnecter</a>
     </nav>
 </header>
@@ -29,7 +29,9 @@ Paramètres : $utilisateur
 <main>
     <h1>Modifier mon profil</h1>
 
-    <p>Modifiez vos informations personnelles.</p>
+    <p>Vous pouvez modifier votre pseudo, votre adresse email ou votre mot de passe.</p>
+    <p>Vous pouvez modifier une seule information ou plusieurs.
+    Laissez simplement vide les champs que vous ne souhaitez pas modifier.</p>
 
     <form action="valider-modifier-profil.php" method = "POST">
 
@@ -45,6 +47,11 @@ Paramètres : $utilisateur
             <input
                 type="email" id = "email" name = "email"
                 value="<?= $utilisateur->html("email") ?>">
+        </div>
+
+        <div>
+            <label for="password">Nouveau mot de passe :</label>
+            <input type="password" id="password" name="password" >
         </div>
 
         <button type="submit">Enregistrer les modifications</button>
