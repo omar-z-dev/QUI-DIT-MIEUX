@@ -3,14 +3,13 @@
 Classe utilisateur : gestion des objets utilisateur du MCD
 */
 
-require_once __DIR__ . "/../core/model.php";
+require_once "core/model.php";
 
 // Configuration de la classe enfant
 class utilisateur extends _model {
 
     protected $table  = "utilisateur";
     protected $fields = [
-    "id",
     "email" ,
     "mdp", 
     "pseudo",
@@ -86,28 +85,6 @@ class utilisateur extends _model {
 
         return $this->insert();
     }
-
-/*=====================================================
-      3.     recup l'objet utilsateur par son nom
-=======================================================*/
-    /*function findBy($field, $value) {
-
-        $sql = "SELECT * FROM `$this->table`
-                WHERE $field = :value";
-
-        $req = $this->execute($sql, [
-            ":value" => $value
-        ]);
-        // A-t-on récupéré un ligne
-        
-        $lignes = $req->fetchAll(PDO::FETCH_ASSOC);
-        if (empty($lignes)) return false;
-
-        // Transférer le résultat (tableau) dans les attribut $this->values et $this->id
-        $this->loadFromtab($lignes[0]);
-
-        return $this->is();
-    }*/
 }
 
 

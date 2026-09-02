@@ -1,13 +1,10 @@
 <?php
 
-require_once __DIR__ . "/../core/model.php";
+require_once "core/model.php";
 
 class annonce extends _model {
-
     protected $table = "annonce";
-
     protected $fields = [
-        "id",
         "titre",
         "categorie",
         "description",
@@ -17,7 +14,6 @@ class annonce extends _model {
         "date_creation",
         "utilisateur_id"
     ];
-
     protected $links = [
         "utilisateur_id" => "utilisateur"
     ];

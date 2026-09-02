@@ -1,13 +1,12 @@
 <?php
 
-require_once __DIR__ . "/../core/model.php";
+require_once "core/model.php";
 
 class photo extends _model {
 
     protected $table = "photo";
 
     protected $fields = [
-        "id",
         "annonce_id",
         "fichier",
         "principale"
