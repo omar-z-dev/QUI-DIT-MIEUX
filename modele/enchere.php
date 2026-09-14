@@ -5,7 +5,6 @@ require_once "core/model.php";
 class enchere extends _model {
     protected $table = "enchere";
     protected $fields = [
-        "id",
         "annonce_id",
         "utilisateur_id",
         "montant",
