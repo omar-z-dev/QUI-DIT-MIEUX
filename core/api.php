@@ -7,7 +7,9 @@ class api extends _model{
 
     private string $urlCatalogue = "https://api.mywebecom.ovh/play/qdm/categ.php";
 
-
+  /*=================================================
+       1-            getCategoryByCurl
+    ==================================================*/
     function getCategoryByCurl(){
         //role : recuprer le catalogue des categories via l'api
         //parametres : neant
@@ -35,7 +37,7 @@ class api extends _model{
     }
 
     /*=================================================
-       1-            rechercherCategories
+       2-            rechercherCategories
     ==================================================*/
     public function rechercherCategories($recherche){
         //role : recuprer les categories via l'api
