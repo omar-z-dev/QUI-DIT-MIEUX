@@ -69,6 +69,7 @@ class annonce extends _model {
             )";
             $params[":texte"] = "%".$texte."%";
         }
+        
         // Catégories trouvées par l'API
         if(!empty($categories)){
 
@@ -100,21 +101,25 @@ class annonce extends _model {
             //implode retourne une chaine de caractères
             $sql.=" AND categorie IN (".implode(",",$placeholders).")";
         }
+
         // État
         if(!empty($etat)){
             $sql.=" AND etat = :etat";
             $params[":etat"] = $etat;
         }
+
         // Prix maximum
         if($prix!==""){
 
             $sql.=" AND prix_depart <= :prix";
             $params[":prix"] = $prix;
         }
+
         // Vente en cours
         if($vente === "en_cours"){
             $sql.=" AND date_fin > NOW()";
         }
+
         // Vente terminée
         if($vente === "terminee"){
             $sql.=" AND date_fin <= NOW()";

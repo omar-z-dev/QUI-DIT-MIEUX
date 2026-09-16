@@ -72,8 +72,10 @@ Paramètres : id de l'annonce
             <p><strong>Date de fin : </strong><?= $annonce->html("date_fin") ?></p>
 
 
-            <!-- Infos enchere sur l'annonce -->
-             <h2>Enchère sur l'annonce :</h2>
+            <!-- Infos enchere sur l'annonce : afficher la meilleur enchere sinon afficher le prix de depart avec un message aucune enchere pour le moment -->
+
+            <h2>Enchère sur l'annonce :</h2>
+            
             <?php if ($meilleureEnchere): ?>
 
                 <p>
@@ -93,8 +95,14 @@ Paramètres : id de l'annonce
             <!-- formulaire d'enchère pour l'utilisateur connecté -->
             <!-- formulaire d'enchère pour l'utilisateur connecté -->
 
-            <?php if (!empty($_SESSION["connected"]) && $_SESSION["id"] != $annonce->value("utilisateur_id")): ?>
+            
+            <?php 
+            // Vérifier si l'utilisateur est connecté et si l'utilisateur connecté n'est pas l'auteur de l'annonce
+            
+            if (!empty($_SESSION["connected"]) && $_SESSION["id"] != $annonce->value("utilisateur_id")): ?>
+
                 <h2>Enchérir :</h2>
+
                 <form action="encherir.php" method="POST">
 
                     <input type="hidden" name="annonce_id" value="<?= $annonce->id() ?>">
@@ -108,9 +116,11 @@ Paramètres : id de l'annonce
 
                 </form>
 
+                <!--------------- SUIVRE L'ANNONCE  ----------------->
                 <!--------------- SUIVRE L'ANNONCE ----------------->
-                <!--------------- SUIVRE L'ANNONCE ----------------->
+
                 <h2>Suivre l'annonce :</h2>
+
                 <form action="suivre-annonce.php" method="POST">
 
                     <input type="hidden" name="annonce_id" value="<?= $annonce->id() ?>">
@@ -125,12 +135,12 @@ Paramètres : id de l'annonce
                             ⭐ Suivre cette annonce
                         </button>
                     <?php endif; ?>
-
+                    
                 </form>  
                 
             <?php endif; ?> 
 
-            <!---------retour------------->
+            <!---------btn retour------------->
 
             <?php if (!empty($_SESSION["connected"])): ?>
                 <a href="dashboard.php">↩️ Retour</a>

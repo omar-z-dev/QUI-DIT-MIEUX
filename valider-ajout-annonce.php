@@ -95,13 +95,14 @@ if (isset($_FILES["photos"])) {
     // Parcourir les photos car $_FILES["photos"] est un tableau de tableaux
     foreach ($_FILES["photos"]["name"] as $index => $nomOriginal) {
 
-        // Vérifier cette photo
+        // Vérifier cette photo (UPLOAD_ERR_OK vaut 0 ( dans le tableau error ) signifie :le fichier a été envoyé correctement)
+
         if ($_FILES["photos"]["error"][$index] === UPLOAD_ERR_OK) {
 
             // Récupèrer l'emplacement temporaire où PHP a stocké la photo envoyée par l'utilisateur.
             $fichierTemporaire = $_FILES["photos"]["tmp_name"][$index];
 
-            // Extension
+            // recuperer l'Extension
             $extension = strtolower(
                 pathinfo($nomOriginal, PATHINFO_EXTENSION)
             );
@@ -124,6 +125,7 @@ if (isset($_FILES["photos"])) {
 
                 // Instancier un objet photo
                 $photo = new photo();
+
                 // Remplir l'objet photo
                 $photo->set("annonce_id", $annonceId);
                 $photo->set("fichier", $nomFichier);

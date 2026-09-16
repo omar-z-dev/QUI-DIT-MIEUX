@@ -22,6 +22,7 @@ $suivi = new suivi();
 // Vérifier si l'utilisateur est connecté
 $utilisateurId = $_SESSION["id"] ?? null;
 
+//si l utiisateur est connecté appelle estSuivi sinon mets false
 $estSuivie = $utilisateurId !== null
     ? $suivi->estSuivie($utilisateurId, $id)
     : false;

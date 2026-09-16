@@ -2,11 +2,13 @@
 Architecture du projet
 ===================================================>
 
+l'appli comporte plusieurs dossier :
+
 1-Dossier documents on y trouve les schéma d'ergonomie et le schéma MCD MPD, l'appli est accessible via le lien : https://qdm-omar.play.mywebecom.ovh
 
 2-Dossier CORE on y trouve les fichiers :
 -api.php : la classe qui gère l'accès à l'API
--model.php : classe \_model qui hérite ses méthode aux autre classes du projet
+-model.php : classe \_model qui hérite ses méthodes aux autres classes du projet
 -recaptcha.php : la classe qui gère les connexion anti robots
 
 3-Dosssier libr :
@@ -24,6 +26,8 @@ Architecture du projet
 6-Les controllers sont à la racine du dossier QUI-DIT-MIEUX
 
 7-Dossier js : fichier du script js utilisé en ajax
+
+8-Dossier img : comporte les images téléchargées depuis l'appli lors d'ajout d'une annonce avec jointure de photo
 
 <==================================================
 Infos sur les fichiers

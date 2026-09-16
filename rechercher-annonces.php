@@ -38,7 +38,13 @@ if(!empty($categorie)){
     // Rechercher les catégories correspondantes via l'API
     $categoriesTrouvees = $api->rechercherCategories($categorie);
 
-    // Récupérer uniquement les codes des catégories
+    // Récupérer uniquement les codes des catégories ex : 
+    /*$categorie = [
+                        "15",
+                        "14",
+                        "22"
+                    ];*/
+                    
     $categorie = array_keys($categoriesTrouvees);
 }
 // Si aucune catégorie n'a été saisie

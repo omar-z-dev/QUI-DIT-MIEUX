@@ -14,6 +14,7 @@ class api extends _model{
         //role : recuprer le catalogue des categories via l'api
         //parametres : neant
         //retour : retourne le catalogue des categories
+
         // Initialisation cURL
         $curl = curl_init($this->urlCatalogue);
 
@@ -34,24 +35,42 @@ class api extends _model{
 
         // Transformer JSON en objet PHP
         return json_decode($resultat);
+
+        /* object(stdClass)#1 (3) {
+            ["1"]=>
+            string(7) "Voiture"
+            ["2"]=>
+            string(6) "Maison"
+            ["3"]=>
+            string(12) "Informatique"
+        }*/
     }
 
     /*=================================================
        2-            rechercherCategories
     ==================================================*/
     public function rechercherCategories($recherche){
+
         //role : recuprer les categories via l'api
         //parametres : $recherche
-        //retour : retourne le catalogue des categories
-    $url = $this->urlCatalogue . "?search=" . urlencode($recherche);
+        //retour : retourne le catalogue des categories en tableau assoc
 
-    $curl = curl_init($url);
+        //urlencode transforme le texte pour pouvoir le mettre dans une URL, voiture rouge devient voiture+rouge
+        $url = $this->urlCatalogue . "?search=" . urlencode($recherche);
 
-    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        $curl = curl_init($url);
 
-    $response = curl_exec($curl);
-    
-    //Tableau associatif 
-    return json_decode($response, true);
-}
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+        $response = curl_exec($curl);
+        
+        //Retourner un tableau associatif  ex : 
+           /* [
+                "1" => "Voiture",
+                "5" => "Voiture électrique",
+                "8" => "Voiture ancienne"
+            ]*/
+
+        return json_decode($response, true);
+    }
 }
