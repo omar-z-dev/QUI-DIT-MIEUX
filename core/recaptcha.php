@@ -30,7 +30,7 @@ class recaptcha {
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
 
-        // On prépare le tableau des champs à envoyer à l'API
+        // On prépare le tableau des champs à envoyer à l'API google
         $data = [
             "secret"   => $this->secret,
             "response" => $token
@@ -59,7 +59,7 @@ class recaptcha {
         string(108) "{
                         "success"      : true,
                         "challenge_ts" : "2026-07-16T13:13:41Z",
-                        "hostname"     : "fep-omar.play.mywebecom.ovh"
+                        "hostname"     : "qdm-omar.play.mywebecom.ovh"
                         }"     */
 
         $response = json_decode($result);

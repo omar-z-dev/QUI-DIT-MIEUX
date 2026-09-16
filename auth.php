@@ -113,7 +113,7 @@ switch ($action) {
 
             $recaptcha = new recaptcha();
 
-            /*Quand l'utilisateur coche le reCAPTCHA Google génère un jeton temporaire (token). Le navigateur l'envoie avec le formulaire  , puis on récupère le jeton de l'utilisateur.*/
+            /*Quand l'utilisateur coche le reCAPTCHA Google génère un jeton temporaire (token). Le navigateur l'envoie avec le formulaire  , puis on récupère le token de l'utilisateur.*/
             $token = $_POST["g-recaptcha-response"] ?? "";
             
 

@@ -49,9 +49,10 @@ Paramètres : aucun
                 <label for="password">Mot de passe :</label>
                 <input type="password" name="password" placeholder="Mot de passe" ><br><br>
 
-                <!-- recaptcha -->
+                <!-- recaptcha : C'est ta clé publique reCAPTCHA, appelée site key Elle permet à Google de savoir : Pour quel site est-ce que je dois afficher ce reCAPTCHA ? -->
                 <div 
-                    class="g-recaptcha" data-sitekey="6LcoUZotAAAAAMqyFNFh10UzzSfHlCxVR7bVP1yd">
+                    class="g-recaptcha" 
+                    data-sitekey="6LcoUZotAAAAAMqyFNFh10UzzSfHlCxVR7bVP1yd">
                 </div>
                 <button class="login" type="submit">S'inscrire</button>
                 <!-- Si vous avez deja un compte Se connecter -->
