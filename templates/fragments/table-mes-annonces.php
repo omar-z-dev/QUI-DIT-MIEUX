@@ -32,7 +32,7 @@ $statuts : statut de chaque annonce
 
 <tbody>
     <?php if (empty($mesAnnonces)): ?>
-        <!-- Première ligne : aucune annonce -->
+        <!-- Première ligne : si $mesAnnonces est vide donc aucune annonce -->
         <tr>
             <td colspan="5" style="text-align: center;">
                 Vous n'avez aucune annonce.
@@ -40,25 +40,40 @@ $statuts : statut de chaque annonce
         </tr>
     <?php else: ?>
 
-        <?php foreach ($mesAnnonces as $annonce): ?>
+        <?php
+            // parcourrir le tableau des objets annonces
+            foreach ($mesAnnonces as $annonce): ?>
             <tr>
+                <!-- Titre de l'annonce -->
                 <td><?= $annonce->html("titre") ?>
                 </td>
+
+                <!-- Prix courant -->
                 <td><?=htmlspecialchars($derniersPrix[$annonce->id()]) ?> €
                 </td>
+
+                <!-- Date de fin -->
                 <td><?= $annonce->html("date_fin") ?>
                 </td>
+
+                <!-- Statut de l'annonce en cours ou non vendu  -->
                 <td>
                     <?= htmlspecialchars($statuts[$annonce->id()]) ?>
                 </td>
+
+                <!-- Modifier l'annonce -->
                 <td>
                     <a href="modifier-annonce.php?&id=<?= $annonce->id() ?>">
                     Modifier 📝</a>
                 </td>
+
+                <!-- Supprimer l'annonce -->
                 <td>
                     <a href="supprimer-annonce.php?&id=<?= $annonce->id() ?>" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette annonce ?');">
                     Supprimer ❌</a>
                 </td>
+
+                <!-- Voir l'annonce -->
                 <td>
                     <a href="detail-annonce.php?id=<?= $annonce->id() ?>">
                     Voir detail 🧐</a>
@@ -66,7 +81,8 @@ $statuts : statut de chaque annonce
             </tr>
         <?php endforeach; ?>
     <?php endif; ?>
-    <!-- Deuxième ligne : toujours affichée -->
+
+    <!-- Deuxième ligne : toujours affichée btn ajouter annonce -->
     <tr>
         <td colspan="5" style="text-align: center;">
             <a href="ajouter-annonce.php">

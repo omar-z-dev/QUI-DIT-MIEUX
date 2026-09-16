@@ -36,16 +36,23 @@ foreach($mesAnnonces as $annonce){
     // Dernier prix
     if($meilleureEnchere){
         $derniersPrix[$annonce->id()] = $meilleureEnchere->value("montant");
+
     }else{
         //stocker le dernier prix avec l'ID de l'annonce
         $derniersPrix[$annonce->id()] = $annonce->value("prix_depart");
     }
 
     // Statut
+
+    // si date de fin est plus grande que la date actuelle
     if(strtotime($annonce->value("date_fin")) > time()){
         $statuts[$annonce->id()] = "En cours";
+
+    // si date de fin est plus petite que la date actuelle et et que une enchere existe
     }elseif($meilleureEnchere){
         $statuts[$annonce->id()] = "Vendu";
+
+    // si date de fin est plus petite que la date actuelle et qu'aucune enchere n'existe
     }else{
         $statuts[$annonce->id()] = "Non vendu";
     }
