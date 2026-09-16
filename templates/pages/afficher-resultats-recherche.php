@@ -11,6 +11,10 @@ Paramètres :
 */
 /** @var array $ListeAnnonces */
 /** @var object $categories */
+/** @var array $photosPrincipales */
+/** @var array $prixCourants */
+
+
 ?>
 
 <!DOCTYPE html>
@@ -45,13 +49,15 @@ Paramètres :
                         <!-- image principale -->
                         <?php if($photosPrincipales[$annonce->id()]): ?>
 
-                        <img
-                            src="img/<?= $photosPrincipales[$annonce->id()]->html("fichier") ?>"
-                            alt="<?= $annonce->html("titre") ?>"
-                            class="image-annonce">
+                            <!-- RECUP LOBJET PHOTO PRINCIPALE puis acceder a la valeur de fichier -->
+                            <img
+                                src="img/<?= $photosPrincipales[$annonce->id()]->html("fichier") ?>"
+                                alt="<?= $annonce->html("titre") ?>"
+                                class="image-annonce">
 
-                        <?php else: ?>
-                            <div class="sans-image">📷 Aucune image</div>
+                            <?php else: ?>
+                                <div class="sans-image">📷 Aucune image</div>
+
                         <?php endif; ?>
 
                         <!-- titre -->

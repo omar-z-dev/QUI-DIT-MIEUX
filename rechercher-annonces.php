@@ -99,4 +99,14 @@ foreach($ListeAnnonces as $annonce){
 print_r($ListeAnnonces);
 echo "</pre>";*/
 
+/*echo "<pre>";
+print_r($prixCourants);
+echo "</pre>";*/
+
+/*echo "<pre>";
+print_r($photosPrincipales);
+echo "</pre>";*/
+
+
+// Afficher le template
 require "templates/pages/afficher-resultats-recherche.php";

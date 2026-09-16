@@ -14,6 +14,9 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
 
 */
 /** @var object $categories */
+/** @var object $annoncesEncheries */
+/** @var object $prixCourants */
+/** @var object $statutsEncheres */
 
 ?>
 <!DOCTYPE html>
@@ -173,7 +176,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                             <tr>
                                 <td><?= $annonce->html("titre") ?></td>
 
-                                <td><?= $prixCourants[$annonceId] ?> €</td>
+                                <td><?= htmlspecialchars($prixCourants[$annonceId]) ?> €</td>
 
                                 <td><?= $statutsEncheres[$annonceId] ?></td>
 
@@ -223,7 +226,7 @@ Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
                                     </td>
 
                                     <!-- Prix remporté -->
-                                    <td><?= $prixCourants[$annonceId] ?> €</td>
+                                    <td><?= htmlspecialchars($prixCourants[$annonceId]) ?> €</td>
 
                                     <!-- Statut -->
                                     <td>🏆 Remportée</td>

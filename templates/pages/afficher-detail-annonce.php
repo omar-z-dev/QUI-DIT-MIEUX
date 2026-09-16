@@ -11,6 +11,9 @@ Paramètres : id de l'annonce
 /** @var string $libelleCategorie */
 /** @var object $meilleureEnchere */
 /** @var object $estSuivie */
+/** @var object $annonce */
+
+
 ?>
 
 <!DOCTYPE html>

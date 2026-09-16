@@ -45,18 +45,18 @@ foreach($mesEncheres as $uneEnchere){
     // ID de cette annonce
     $annonceId = $annonce->id();
 
-    // Éviter les doublons
+    // Éviter les doublons car une annonce peut avoir plusieurs enchères de l'utilisateur connecté
     if(isset($annoncesEncheries[$annonceId])){
         continue;
     }
 
-    // Mémoriser cette annonce
+    // Enregistrer l'objet annonce dans le tableau $annoncesEncheries (clé = ID de l'annonce)
     $annoncesEncheries[$annonceId] = $annonce;
 
-    // Récupérer la meilleure enchère actuelle
+    // Récupérer la meilleure (objet ) enchère actuelle
     $meilleureEnchere = $enchere->getMeilleureEnchere($annonceId);
 
-    // Stocker le prix courant
+    // Stocker le prix courant et le statut
     if($meilleureEnchere){
         $prixCourants[$annonceId] = $meilleureEnchere->value("montant");
 

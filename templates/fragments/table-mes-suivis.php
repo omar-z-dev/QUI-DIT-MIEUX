@@ -1,3 +1,27 @@
+<?php
+
+/* 
+
+TEMPLATE : 
+
+Rôle : afficher la table des annonces suivis de l'utilisateur connecté
+
+Paramètres : 
+$annonces 
+$mesSuivis
+$vendeurs
+$nombreEncheres
+$prixCourantsAll
+
+*/
+/** @var array $categories */
+/** @var array $annonces */
+/** @var array $mesSuivis */
+/** @var array $vendeurs */
+/** @var array $nombreEncheres */
+/** @var array $prixCourantsAll */
+
+?>
 <section>
     <h2>Mes annonces suivies 👣</h2>
     <p>Retrouvez ici toutes les annonces que vous avez choisi de suivre. Consultez leur évolution, le prix actuel, le nombre d'enchères et la date de fin, puis accédez rapidement au détail de chaque annonce. Si vous avez participé aux enchères d'une annonce, vous pouvez également consulter l'historique des enchères.</p>
@@ -36,12 +60,12 @@
 
                         <!-- Nombre d'enchères -->
                         <td>
-                            <?= $nombreEncheres[$annonceId] ?>
+                            <?= htmlspecialchars($nombreEncheres[$annonceId]) ?>
                         </td>
 
                         <!-- Prix courant -->
                         <td> Prix courant :
-                            <?= $prixCourantsAll[$annonceId] ?> €
+                            <?= htmlspecialchars($prixCourantsAll[$annonceId]) ?> €
                         </td>
                             
                         <!-- Date heure de fin -->

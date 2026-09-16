@@ -2,13 +2,18 @@
 
 /* 
 
-TEMPLATE : afficher la table des annonces de l'utilisateur connecté
+TEMPLATE : 
+
+Rôle : afficher la table des annonces de l'utilisateur connecté
 
 Paramètres : $mesAnnonces : annonces de l'utilisateur connecté
 $derniersPrix : dernier prix de chaque annonce
 $statuts : statut de chaque annonce
 
 */
+/** @var array $mesAnnonces */
+/** @var array $derniersPrix */
+/** @var array $statuts */
 
 ?>
 

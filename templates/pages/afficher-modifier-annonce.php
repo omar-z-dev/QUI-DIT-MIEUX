@@ -11,6 +11,7 @@ Paramètres :
 
 */
 /** @var object $categories */
+/** @var object $annonce */
 ?>
 
 <!DOCTYPE html>
