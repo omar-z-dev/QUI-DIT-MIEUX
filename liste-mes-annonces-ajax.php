@@ -33,12 +33,12 @@ foreach($mesAnnonces as $annonce){
     // Récupérer la meilleure enchère
     $meilleureEnchere = $enchere->getMeilleureEnchere($annonce->id());
 
-    // Dernier prix
+    // Recupérer le Dernier prix
     if($meilleureEnchere){
         $derniersPrix[$annonce->id()] = $meilleureEnchere->value("montant");
 
     }else{
-        //stocker le dernier prix avec l'ID de l'annonce
+        //stocker le dernier prix avec l'ID de l'annonce (clé - valeur)
         $derniersPrix[$annonce->id()] = $annonce->value("prix_depart");
     }
 

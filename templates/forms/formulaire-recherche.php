@@ -9,6 +9,7 @@ Paramètres : aucun
 ?>
 
 <h3>Rechercher une annonce :</h3>
+
 <p>Vous pouvez rechercher une annonce selon plusieurs critères en remplissant le formulaire ci-dessous</p>
 
 <form action="rechercher-annonces.php" method="GET">
@@ -18,7 +19,7 @@ Paramètres : aucun
         <input type="text" name="texte" id="texte">
     </div>
 
-    <!--Codelist des catégories qui proviennent de l'API -->
+    <!--catégories-->
     <div>
         <label for="recherche_categorie">Catégorie :</label>
 

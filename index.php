@@ -10,14 +10,17 @@ paramètre : aucun
 // Initialisation
 require_once "libr/init.php";
 
-//Récupérer ttes les annonces
+
+//Instancier un objet annonce
 $annonce = new annonce();
+
+//Récupérer ttes les annonces
 $ListeAnnonces = $annonce->listAll();
 
 //Instacier un objet api
 $api = new api();
 
-//Récupérer ttes les categories
+//Récupérer ttes les categories pour afficher le libellé dans le tableau de liste des objets proposé dans l'accueil publique , car dans la table annonce stocke l'id de la categorie et pas le libellé
 $categories = $api->getCategoryByCurl();
 
 /*echo "<pre>";

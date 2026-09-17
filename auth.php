@@ -55,7 +55,7 @@ switch ($action) {
             header("Location: auth.php?action=login");
             exit;
         }
-          // Si on arrive en GET, afficher le formulaire
+          // Si on arrive en GET (clique sur le lien se connecter), afficher le formulaire
             require "templates/pages/afficher-page-connexion.php";
             break;
 

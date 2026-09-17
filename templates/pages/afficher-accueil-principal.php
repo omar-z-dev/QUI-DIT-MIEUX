@@ -32,7 +32,7 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
         <h1> Bienvenue sur QuiDitMieux  💵💵 </h1>
 
         <?php
-            // Message si nécessaire connection obligatoire
+            // Message si nécessaire connection obligatoire ($message est la var dans le fichier require_login.php)
             if(!empty($message)): ?>
             <p style="color:red;font-weight:bold;">
                 <?= htmlspecialchars($message) ?>
@@ -95,6 +95,8 @@ Paramètres : $ListeAnnonces pour afficher les annonces des utilisateurs
                                 </td>
                                 <td> <?= date("Y-m-d à H:i", strtotime($annonce->value("date_fin"))) ?>
                                 </td>
+                                
+                                <!-- btn voir detail -->
                                 <td>
                                     <a href="detail-annonce.php?id=<?= $annonce->id() ?>">
                                         Voir detail 🧐
