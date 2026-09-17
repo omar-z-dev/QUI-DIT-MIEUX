@@ -107,9 +107,9 @@ switch ($action) {
                 exit;
             }
 
-            /*================================
-                       RECAPTCHA
-            ================================*/
+            /*=============================================================
+                reCAPTCHA : Completely Automated Public Turing test to tell Computers and Humans Apart
+            =============================================================*/
 
             $recaptcha = new recaptcha();
 
